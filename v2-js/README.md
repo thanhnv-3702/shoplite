@@ -1,8 +1,8 @@
 # ShopLite — v2-js
 
-**Module 2 — JavaScript** · Day 1: ES6+ & ES modules.
+**Module 2 — JavaScript** · Day 2: DOM render + event delegation.
 
-Giao diện vẫn tĩnh (copy từ `v1-html`). JS layer chuẩn bị dữ liệu + pure functions cho Day 2 (DOM render).
+Trang danh sách sản phẩm đã render động từ `data.js`, tìm kiếm real-time và bắt click bằng event delegation.
 
 ## Chạy local
 
@@ -12,7 +12,7 @@ Giao diện vẫn tĩnh (copy từ `v1-html`). JS layer chuẩn bị dữ liệu
 npx serve .
 ```
 
-Mở `index.html` → DevTools Console sẽ thấy log `ShopLite v2-js — ES modules OK`.
+Mở `index.html` → danh sách sản phẩm được dựng bằng JS và nút "Thêm vào giỏ" sẽ log đúng sản phẩm trong Console.
 
 ## Cấu trúc
 
@@ -23,7 +23,7 @@ v2-js/
 ├── theme.js
 ├── data.js                 # export mảng products
 ├── utils/productHelpers.js # filterByKeyword, sortByPrice, ...
-└── main.js                 # import & demo array methods
+└── main.js                 # render DOM, search, event delegation
 ```
 
 ## Tiến độ Module 2
@@ -31,5 +31,5 @@ v2-js/
 | Ngày | Nội dung | Trạng thái |
 |------|----------|------------|
 | Day 1 (Day 04/18) | ES6+, data.js, pure functions | ✅ |
-| Day 2 | DOM render động | ⏳ |
+| Day 2 (Day 05/18) | DOM render động | ✅ |
 | Day 3 | fetch API + localStorage | ⏳ |

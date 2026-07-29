@@ -47,112 +47,12 @@
     <section class="products" aria-labelledby="products-title">
       <h1 id="products-title">Sản phẩm</h1>
       <p class="section-lead">
-        Giao diện tĩnh hoàn chỉnh — CSS variables, dark mode, responsive 360px–1280px.
+        Danh sách sản phẩm được render động từ `data.js`, lọc ngay khi bạn gõ.
       </p>
+      <p class="products-meta" id="products-meta" aria-live="polite"></p>
 
-      <div class="product-grid">
-        <article class="product-card">
-          <a href="product.html" class="card-image-link">
-            <img
-              src="https://picsum.photos/seed/sl1/400/500"
-              alt="Áo thun cotton basic màu kem"
-              width="400"
-              height="500"
-            >
-          </a>
-          <div class="card-body">
-            <p class="card-cat">Áo</p>
-            <h2><a href="product.html">Áo thun cotton basic</a></h2>
-            <p class="price">290.000₫</p>
-            <p class="card-cta"><a class="btn" href="#">Thêm vào giỏ</a></p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <a href="product.html" class="card-image-link">
-            <img
-              src="https://picsum.photos/seed/sl2/400/500"
-              alt="Quần jeans ống suông xanh đậm"
-              width="400"
-              height="500"
-            >
-          </a>
-          <div class="card-body">
-            <p class="card-cat">Quần</p>
-            <h2><a href="product.html">Quần jeans ống suông cao cấp dáng suông thoải mái</a></h2>
-            <p class="price">680.000₫</p>
-            <p class="card-cta"><a class="btn" href="#">Thêm vào giỏ</a></p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <a href="product.html" class="card-image-link">
-            <img
-              src="https://picsum.photos/seed/sl3/400/500"
-              alt="Đầm lụa midi cổ V màu hồng"
-              width="400"
-              height="500"
-            >
-          </a>
-          <div class="card-body">
-            <p class="card-cat">Đầm</p>
-            <h2><a href="product.html">Đầm lụa midi cổ V</a></h2>
-            <p class="price">890.000₫</p>
-            <p class="card-cta"><a class="btn" href="#">Thêm vào giỏ</a></p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <a href="product.html" class="card-image-link">
-            <img
-              src="https://picsum.photos/seed/sl4/400/500"
-              alt="Giày sneaker da trắng"
-              width="400"
-              height="500"
-            >
-          </a>
-          <div class="card-body">
-            <p class="card-cat">Giày</p>
-            <h2><a href="product.html">Giày sneaker da</a></h2>
-            <p class="price">980.000₫</p>
-            <p class="card-cta"><a class="btn" href="#">Thêm vào giỏ</a></p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <a href="product.html" class="card-image-link">
-            <img
-              src="https://picsum.photos/seed/sl5/400/500"
-              alt="Áo khoác bomber màu xám"
-              width="400"
-              height="500"
-            >
-          </a>
-          <div class="card-body">
-            <p class="card-cat">Khoác</p>
-            <h2><a href="product.html">Áo khoác bomber chống gió nhẹ</a></h2>
-            <p class="price">850.000₫</p>
-            <p class="card-cta"><a class="btn" href="#">Thêm vào giỏ</a></p>
-          </div>
-        </article>
-
-        <article class="product-card">
-          <a href="product.html" class="card-image-link">
-            <img
-              src="https://picsum.photos/seed/sl6/400/500"
-              alt="Túi tote canvas màu cát"
-              width="400"
-              height="500"
-            >
-          </a>
-          <div class="card-body">
-            <p class="card-cat">Phụ kiện</p>
-            <h2><a href="product.html">Túi tote canvas</a></h2>
-            <p class="price">280.000₫</p>
-            <p class="card-cta"><a class="btn" href="#">Thêm vào giỏ</a></p>
-          </div>
-        </article>
-      </div>
+      <div class="product-grid" id="product-grid" aria-live="polite"></div>
+      <p class="empty-state" id="empty-state" hidden>Không tìm thấy sản phẩm phù hợp.</p>
     </section>
   </main>
 
