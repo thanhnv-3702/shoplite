@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng — ShopLite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="ShopLite trang chủ">
+        ShopLite<span class="logo-dot" aria-hidden="true">.</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul>
+          <li><a href="index.html">Sản phẩm</a></li>
+          <li><a href="#">Khuyến mãi</a></li>
+          <li><a href="#">Về shop</a></li>
+        </ul>
+      </nav>
+
+      <form class="search" role="search" action="#" method="get" onsubmit="return false;">
+        <label class="visually-hidden" for="q">Tìm sản phẩm</label>
+        <input id="q" type="search" name="q" placeholder="Tìm sản phẩm…" autocomplete="off">
+      </form>
+
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Bật chế độ tối">🌙</button>
+        <a class="btn btn-ghost" href="#">Đăng nhập</a>
+        <a class="cart-link is-active" href="cart.html" aria-label="Giỏ hàng, 3 sản phẩm" aria-current="page">
+          <span class="cart-icon" aria-hidden="true">🛒</span>
+          <span class="cart-badge">3</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Trang chủ</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span aria-current="page">Giỏ hàng</span>
+    </nav>
+
+    <section class="cart-page" aria-labelledby="cart-title">
+      <h1 id="cart-title">Giỏ hàng <span class="cart-count">(3 sản phẩm)</span></h1>
+
+      <div class="cart-layout">
+        <div class="cart-items" role="list">
+          <article class="cart-item" role="listitem">
+            <a href="product.html" class="cart-item-image">
+              <img
+                src="https://picsum.photos/seed/sl1/120/150"
+                alt="Áo thun cotton basic"
+                width="120"
+                height="150"
+              >
+            </a>
+            <div class="cart-item-info">
+              <h2><a href="product.html">Áo thun cotton basic</a></h2>
+              <p class="cart-item-meta">Màu: Kem · Size: M</p>
+              <p class="price">290.000₫</p>
+            </div>
+            <div class="cart-item-qty">
+              <label class="visually-hidden" for="qty-1">Số lượng Áo thun cotton basic</label>
+              <input id="qty-1" type="number" name="qty-1" value="1" min="1" max="99">
+            </div>
+            <p class="cart-item-line-total" aria-label="Thành tiền">290.000₫</p>
+            <button type="button" class="cart-item-remove" aria-label="Xóa Áo thun cotton basic">✕</button>
+          </article>
+
+          <article class="cart-item" role="listitem">
+            <a href="product.html" class="cart-item-image">
+              <img
+                src="https://picsum.photos/seed/sl2/120/150"
+                alt="Quần jeans ống suông"
+                width="120"
+                height="150"
+              >
+            </a>
+            <div class="cart-item-info">
+              <h2><a href="product.html">Quần jeans ống suông</a></h2>
+              <p class="cart-item-meta">Màu: Xanh đậm · Size: 32</p>
+              <p class="price">680.000₫</p>
+            </div>
+            <div class="cart-item-qty">
+              <label class="visually-hidden" for="qty-2">Số lượng Quần jeans ống suông</label>
+              <input id="qty-2" type="number" name="qty-2" value="1" min="1" max="99">
+            </div>
+            <p class="cart-item-line-total" aria-label="Thành tiền">680.000₫</p>
+            <button type="button" class="cart-item-remove" aria-label="Xóa Quần jeans ống suông">✕</button>
+          </article>
+
+          <article class="cart-item" role="listitem">
+            <a href="product.html" class="cart-item-image">
+              <img
+                src="https://picsum.photos/seed/sl6/120/150"
+                alt="Túi tote canvas"
+                width="120"
+                height="150"
+              >
+            </a>
+            <div class="cart-item-info">
+              <h2><a href="product.html">Túi tote canvas</a></h2>
+              <p class="cart-item-meta">Màu: Cát</p>
+              <p class="price">280.000₫</p>
+            </div>
+            <div class="cart-item-qty">
+              <label class="visually-hidden" for="qty-3">Số lượng Túi tote canvas</label>
+              <input id="qty-3" type="number" name="qty-3" value="1" min="1" max="99">
+            </div>
+            <p class="cart-item-line-total" aria-label="Thành tiền">280.000₫</p>
+            <button type="button" class="cart-item-remove" aria-label="Xóa Túi tote canvas">✕</button>
+          </article>
+        </div>
+
+        <aside class="cart-summary" aria-labelledby="summary-title">
+          <h2 id="summary-title">Tổng đơn hàng</h2>
+          <dl class="summary-rows">
+            <div>
+              <dt>Tạm tính</dt>
+              <dd>1.250.000₫</dd>
+            </div>
+            <div>
+              <dt>Phí vận chuyển</dt>
+              <dd>30.000₫</dd>
+            </div>
+            <div class="summary-total">
+              <dt>Tổng cộng</dt>
+              <dd>1.280.000₫</dd>
+            </div>
+          </dl>
+          <a class="btn btn-lg btn-block" href="#">Thanh toán</a>
+          <a class="btn btn-ghost btn-block" href="index.html">← Tiếp tục mua sắm</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <section aria-labelledby="about-title">
+        <h2 id="about-title">ShopLite</h2>
+        <p>Mini shop xuyên suốt lộ trình Frontend 18 ngày.</p>
+      </section>
+
+      <nav aria-labelledby="footer-nav-title">
+        <h2 id="footer-nav-title">Liên kết</h2>
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="#">Về chúng tôi</a></li>
+          <li><a href="#">Hỗ trợ</a></li>
+        </ul>
+      </nav>
+
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Liên hệ</h2>
+        <p>Email: hello@shoplite.local</p>
+        <p>Hotline: 1900 0000</p>
+      </section>
+    </div>
+    <p class="footer-copy">© 2026 ShopLite · Module 1 Day 3</p>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
