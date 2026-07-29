@@ -8,6 +8,14 @@ ShopLite tiến hóa qua từng module — không làm lại từ đầu mỗi l
 |---------|--------|-------|
 | `v1-html/` | HTML, CSS & Tailwind | Giao diện tĩnh (list / detail / cart) |
 | `v2-js/` | JavaScript | Động: API, search/filter, cart + localStorage |
+
+### v2-js (Module 2)
+
+```bash
+cd v2-js
+npx serve .
+# Mở index.html — ES modules cần HTTP server
+```
 | `v3-ts/` | TypeScript | Refactor sang TS + Vite |
 | `v4-react/` | ReactJS | SPA: Query, RHF+Zod, Zustand/RTK, Router |
 | `v5-next/` | Next.js | SSR/SSG, Auth.js, SEO, deploy Vercel |
