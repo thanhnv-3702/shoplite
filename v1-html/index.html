@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopLite — Cửa hàng online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="ShopLite trang chủ">
+        ShopLite<span class="logo-dot" aria-hidden="true">.</span>
+      </a>
+
+      <form class="search" role="search" action="#" method="get" onsubmit="return false;">
+        <label class="visually-hidden" for="q">Tìm sản phẩm</label>
+        <input
+          id="q"
+          type="search"
+          name="q"
+          placeholder="Tìm sản phẩm…"
+          autocomplete="off"
+        >
+      </form>
+
+      <a class="cart-link" href="#" aria-label="Giỏ hàng, 3 sản phẩm">
+        <span class="cart-icon" aria-hidden="true">🛒</span>
+        <span class="cart-badge">3</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="products" aria-labelledby="products-title">
+      <h1 id="products-title">Sản phẩm</h1>
+      <p class="section-lead">
+        Khung danh sách — lưới thật sẽ dựng ở Day 2. Hiện là placeholder.
+      </p>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <img
+            src="https://picsum.photos/seed/sl1/400/500"
+            alt="Áo thun cotton basic màu kem"
+            width="400"
+            height="500"
+          >
+          <h2>Áo thun cotton basic</h2>
+          <p class="price">290.000₫</p>
+          <p><a class="btn" href="#">Thêm vào giỏ</a></p>
+        </article>
+
+        <article class="product-card">
+          <img
+            src="https://picsum.photos/seed/sl2/400/500"
+            alt="Quần jeans ống suông xanh đậm"
+            width="400"
+            height="500"
+          >
+          <h2>Quần jeans ống suông</h2>
+          <p class="price">680.000₫</p>
+          <p><a class="btn" href="#">Thêm vào giỏ</a></p>
+        </article>
+
+        <article class="product-card">
+          <img
+            src="https://picsum.photos/seed/sl3/400/500"
+            alt="Đầm lụa midi cổ V màu hồng"
+            width="400"
+            height="500"
+          >
+          <h2>Đầm lụa midi cổ V</h2>
+          <p class="price">890.000₫</p>
+          <p><a class="btn" href="#">Thêm vào giỏ</a></p>
+        </article>
+
+        <article class="product-card">
+          <img
+            src="https://picsum.photos/seed/sl4/400/500"
+            alt="Giày sneaker da trắng"
+            width="400"
+            height="500"
+          >
+          <h2>Giày sneaker da</h2>
+          <p class="price">980.000₫</p>
+          <p><a class="btn" href="#">Thêm vào giỏ</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <section aria-labelledby="about-title">
+        <h2 id="about-title">ShopLite</h2>
+        <p>Mini shop xuyên suốt lộ trình Frontend 18 ngày.</p>
+      </section>
+
+      <nav aria-labelledby="footer-nav-title">
+        <h2 id="footer-nav-title">Liên kết</h2>
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="#">Về chúng tôi</a></li>
+          <li><a href="#">Hỗ trợ</a></li>
+        </ul>
+      </nav>
+
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Liên hệ</h2>
+        <p>Email: hello@shoplite.local</p>
+        <p>Hotline: 1900 0000</p>
+      </section>
+    </div>
+    <p class="footer-copy">© 2026 ShopLite · Module 1 Day 1</p>
+  </footer>
+</body>
+</html>
