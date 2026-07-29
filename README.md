@@ -19,4 +19,10 @@ ShopLite tiến hóa qua từng module — không làm lại từ đầu mỗi l
 
 ## Setup
 
-Các bước chạy local sẽ được bổ sung theo từng version trong thư mục tương ứng.
+### v1-html (Module 1)
+
+```bash
+cd v1-html
+# mở index.html trên trình duyệt, hoặc:
+npx serve .
+```
