@@ -1,6 +1,6 @@
 # ShopLite — v3-ts
 
-Phiên bản TypeScript (Vite) của ShopLite.
+Phiên bản TypeScript (Vite) của ShopLite. `strict: true`, fetch/cart có type guard.
 
 ## Chạy
 
@@ -26,6 +26,6 @@ v3-ts/
 │   ├── types.ts
 │   ├── api.ts / cart.ts
 │   ├── main.ts / product.ts / cart-page.ts
-│   └── utils/
+│   └── utils/ (format, helpers, guards, generics)
 └── vite.config.ts
 ```

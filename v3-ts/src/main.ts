@@ -1,6 +1,6 @@
 import "./style.css";
 import "./theme";
-import { fetchProducts } from "./api";
+import { loadProductsState } from "./api";
 import { addToCart, getCartCount } from "./cart";
 import type { Product } from "./types";
 import { filterByKeyword } from "./utils/productHelpers";
@@ -100,8 +100,15 @@ async function initProductListPage(): Promise<void> {
   meta.textContent = "Đang tải sản phẩm…";
 
   try {
-    allProducts = await fetchProducts();
+    const state = await loadProductsState();
     if (loadingState) loadingState.hidden = true;
+
+    if (state.status === "error" || !state.data) {
+      showError(elements, "Không tải được sản phẩm. Vui lòng thử lại.");
+      return;
+    }
+
+    allProducts = state.data;
     renderProducts(allProducts, elements, allProducts.length);
   } catch (error) {
     if (loadingState) loadingState.hidden = true;
