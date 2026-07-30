@@ -6,7 +6,7 @@ Shop e-commerce. Mỗi thư mục là một phiên bản nâng dần của cùng
 |---------|-------|--------|
 | `v1-html/` | HTML, CSS | UI tĩnh |
 | `v2-js/` | JavaScript | API, search, cart (VNĐ) |
-| `v3-ts/` | TypeScript + Vite | *(sắp tới)* |
+| `v3-ts/` | TypeScript + Vite | Đang làm |
 | `v4-react/` | React | *(sắp tới)* |
 | `v5-next/` | Next.js | *(sắp tới)* |
 
@@ -16,6 +16,14 @@ Shop e-commerce. Mỗi thư mục là một phiên bản nâng dần của cùng
 - [Fake Store API](https://fakestoreapi.com)
 
 ## Setup
+
+### v3-ts
+
+```bash
+cd v3-ts
+npm install
+npm run dev
+```
 
 ### v2-js
 
