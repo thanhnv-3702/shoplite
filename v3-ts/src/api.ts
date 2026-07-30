@@ -1,16 +1,24 @@
-import type { Product } from "./types";
+import type { FetchState, Product } from "./types";
+import { isProductArray } from "./utils/guards";
 
-export async function getJSON<T>(url: string): Promise<T> {
+export async function getJSON<T>(
+  url: string,
+  guard: (value: unknown) => value is T
+): Promise<T> {
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error(`HTTP ${res.status}`);
   }
-  return res.json() as Promise<T>;
+
+  const data: unknown = await res.json();
+  if (!guard(data)) {
+    throw new Error("Invalid response shape");
+  }
+  return data;
 }
 
 export async function fetchProducts(): Promise<Product[]> {
-  const products = await getJSON<Product[]>("/products.json");
-  return Array.isArray(products) ? products : [];
+  return getJSON("/products.json", isProductArray);
 }
 
 export async function fetchProductById(id: string | number): Promise<Product> {
@@ -20,4 +28,14 @@ export async function fetchProductById(id: string | number): Promise<Product> {
     throw new Error("HTTP 404");
   }
   return product;
+}
+
+export async function loadProductsState(): Promise<FetchState<Product[]>> {
+  try {
+    const data = await fetchProducts();
+    return { status: "success", data };
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    return { status: "error", error: message };
+  }
 }

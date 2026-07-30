@@ -1,4 +1,5 @@
 import type { CartItem, Product } from "./types";
+import { isCartItemArray } from "./utils/guards";
 
 const CART_KEY = "shoplite-cart-vnd";
 
@@ -11,18 +12,18 @@ export function loadCart(): CartItem[] {
     const raw = localStorage.getItem(CART_KEY);
     if (!raw) return [];
     const parsed: unknown = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as CartItem[]) : [];
+    return isCartItemArray(parsed) ? parsed : [];
   } catch {
     return [];
   }
 }
 
 export function getCartCount(cart: CartItem[] = loadCart()): number {
-  return cart.reduce((sum, item) => sum + (item.quantity ?? 0), 0);
+  return cart.reduce((sum, item) => sum + item.quantity, 0);
 }
 
 export function getCartTotal(cart: CartItem[] = loadCart()): number {
-  return cart.reduce((sum, item) => sum + item.price * (item.quantity ?? 0), 0);
+  return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 }
 
 export function addToCart(product: Product, quantity = 1): CartItem[] {
@@ -46,15 +47,13 @@ export function removeFromCart(id: string | number): CartItem[] {
 }
 
 export function updateQty(id: string | number, quantity: number): CartItem[] {
-  const qty = Number(quantity);
-  if (!Number.isFinite(qty) || qty < 1) {
+  if (!Number.isFinite(quantity) || quantity < 1) {
     return removeFromCart(id);
   }
 
+  const nextQty = Math.min(99, Math.floor(quantity));
   const cart = loadCart().map((item) =>
-    item.id === Number(id)
-      ? { ...item, quantity: Math.min(99, Math.floor(qty)) }
-      : item
+    item.id === Number(id) ? { ...item, quantity: nextQty } : item
   );
   saveCart(cart);
   return cart;
