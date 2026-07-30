@@ -1,12 +1,9 @@
 const API_BASE = "https://dummyjson.com";
 
-/**
- * Fetch JSON với kiểm tra res.ok — luôn dùng try/catch ở nơi gọi.
- */
 export async function getJSON(url) {
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`HTTP ${res.status}: không tải được dữ liệu`);
+    throw new Error(`HTTP ${res.status}`);
   }
   return res.json();
 }

@@ -1,36 +1,32 @@
 # ShopLite
 
-Mini-project e-commerce xuyên suốt **Lộ trình Frontend 18 ngày** (Sun* Learn).
+Mini shop e-commerce. Mỗi thư mục là một phiên bản nâng dần của cùng một sản phẩm.
 
-ShopLite tiến hóa qua từng module — không làm lại từ đầu mỗi lần, mà nâng cấp dần:
+| Version | Stack | Ghi chú |
+|---------|-------|--------|
+| `v1-html/` | HTML, CSS | UI tĩnh |
+| `v2-js/` | JavaScript | API, search, cart |
+| `v3-ts/` | TypeScript + Vite | *(sắp tới)* |
+| `v4-react/` | React | *(sắp tới)* |
+| `v5-next/` | Next.js | *(sắp tới)* |
 
-| Version | Module | Mô tả |
-|---------|--------|-------|
-| `v1-html/` | HTML, CSS & Tailwind | Giao diện tĩnh (list / detail / cart) |
-| `v2-js/` | JavaScript | Động: API, search/filter, cart + localStorage |
+## API
 
-### v2-js (Module 2)
+- [DummyJSON](https://dummyjson.com)
+- [Fake Store API](https://fakestoreapi.com)
+
+## Setup
+
+### v2-js
 
 ```bash
 cd v2-js
 npx serve .
-# Mở index.html — ES modules cần HTTP server
 ```
-| `v3-ts/` | TypeScript | Refactor sang TS + Vite |
-| `v4-react/` | ReactJS | SPA: Query, RHF+Zod, Zustand/RTK, Router |
-| `v5-next/` | Next.js | SSR/SSG, Auth.js, SEO, deploy Vercel |
 
-## API
-
-- [DummyJSON](https://dummyjson.com) (khuyến nghị)
-- [Fake Store API](https://fakestoreapi.com) (dự phòng)
-
-## Setup
-
-### v1-html (Module 1)
+### v1-html
 
 ```bash
 cd v1-html
-# mở index.html trên trình duyệt, hoặc:
 npx serve .
 ```

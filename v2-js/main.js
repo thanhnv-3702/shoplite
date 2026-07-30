@@ -21,7 +21,7 @@ function productCardHTML(product) {
         <p class="card-cat">${escapeHTML(product.category)}</p>
         <h2><a href="product.html?id=${product.id}">${escapeHTML(product.title)}</a></h2>
         <p class="price">${formatMoney(product.price)}</p>
-        <p class="product-rating-text">Rating ${rating}/5</p>
+        <p class="product-rating-text">★ ${rating}</p>
         <p class="card-cta">
           <button type="button" class="btn add-to-cart-btn" data-action="add-to-cart">
             Thêm vào giỏ
@@ -87,7 +87,7 @@ async function initProductListPage() {
   } catch (error) {
     if (loadingState) loadingState.hidden = true;
     console.error(error);
-    showError(elements, "Không tải được sản phẩm. Kiểm tra mạng rồi thử lại.");
+    showError(elements, "Không tải được sản phẩm. Vui lòng thử lại.");
     return;
   }
 

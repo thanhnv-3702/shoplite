@@ -41,7 +41,7 @@ function renderProductDetail(product, container) {
 
       <dl class="product-meta">
         <div>
-          <dt>Brand</dt>
+          <dt>Thương hiệu</dt>
           <dd>${escapeHTML(product.brand || "—")}</dd>
         </div>
         <div>
@@ -75,7 +75,7 @@ async function initProductDetailPage() {
   if (!id) {
     if (status) {
       status.hidden = false;
-      status.textContent = "Thiếu id sản phẩm trên URL (?id=...).";
+      status.textContent = "Không tìm thấy sản phẩm.";
     }
     container.innerHTML = "";
     return;
@@ -98,7 +98,7 @@ async function initProductDetailPage() {
     container.innerHTML = "";
     if (status) {
       status.hidden = false;
-      status.textContent = "Không tải được sản phẩm. Kiểm tra id hoặc mạng rồi thử lại.";
+      status.textContent = "Không tải được sản phẩm. Vui lòng thử lại.";
     }
   }
 }

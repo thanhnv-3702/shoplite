@@ -1,7 +1,4 @@
-/**
- * Dữ liệu sản phẩm giả — cấu trúc giống DummyJSON.
- * Ngày 2 sẽ render từ đây; ngày 3 chuyển sang fetch API.
- */
+/** Mock product data used in early JS experiments. */
 export const products = [
   {
     id: 1,
