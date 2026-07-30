@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ hàng — ShopLite</title>
+  
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html" aria-label="ShopLite trang chủ">
+        ShopLite<span class="logo-dot" aria-hidden="true">.</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Menu chính">
+        <ul>
+          <li><a href="index.html">Sản phẩm</a></li>
+          <li><a href="#">Khuyến mãi</a></li>
+          <li><a href="#">Về shop</a></li>
+        </ul>
+      </nav>
+
+      <form class="search" role="search" action="index.html" method="get">
+        <label class="visually-hidden" for="q">Tìm sản phẩm</label>
+        <input id="q" type="search" name="q" placeholder="Tìm sản phẩm…" autocomplete="off">
+      </form>
+
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Bật chế độ tối">🌙</button>
+        <a class="btn btn-ghost" href="#">Đăng nhập</a>
+        <a class="cart-link is-active" href="cart.html" aria-label="Giỏ hàng, 0 sản phẩm" aria-current="page">
+          <span class="cart-icon" aria-hidden="true">🛒</span>
+          <span class="cart-badge" hidden>0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html">Trang chủ</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span aria-current="page">Giỏ hàng</span>
+    </nav>
+
+    <section class="cart-page" aria-labelledby="cart-title">
+      <h1 id="cart-title">Giỏ hàng <span class="cart-count" id="cart-count-label">(0 sản phẩm)</span></h1>
+
+      <p class="empty-state" id="cart-empty" hidden>
+        Giỏ hàng trống. <a href="index.html">Tiếp tục mua sắm</a>
+      </p>
+
+      <div class="cart-layout" id="cart-layout" hidden>
+        <div class="cart-items" id="cart-items" role="list"></div>
+
+        <aside class="cart-summary" aria-labelledby="summary-title">
+          <h2 id="summary-title">Tổng đơn hàng</h2>
+          <dl class="summary-rows">
+            <div>
+              <dt>Tạm tính</dt>
+              <dd id="cart-subtotal">0₫</dd>
+            </div>
+            <div>
+              <dt>Phí vận chuyển</dt>
+              <dd id="cart-shipping">0₫</dd>
+            </div>
+            <div class="summary-total">
+              <dt>Tổng cộng</dt>
+              <dd id="cart-total">0₫</dd>
+            </div>
+          </dl>
+          <a class="btn btn-lg btn-block" href="#">Thanh toán</a>
+          <a class="btn btn-ghost btn-block" href="index.html">← Tiếp tục mua sắm</a>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <section aria-labelledby="about-title">
+        <h2 id="about-title">ShopLite</h2>
+        <p>Cửa hàng tiện ích cho mọi nhà.</p>
+      </section>
+
+      <nav aria-labelledby="footer-nav-title">
+        <h2 id="footer-nav-title">Liên kết</h2>
+        <ul>
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="#">Về chúng tôi</a></li>
+          <li><a href="#">Hỗ trợ</a></li>
+        </ul>
+      </nav>
+
+      <section aria-labelledby="contact-title">
+        <h2 id="contact-title">Liên hệ</h2>
+        <p>Email: thanhg@shoplite.com</p>
+        <p>Hotline: 1900 0000</p>
+      </section>
+    </div>
+    <p class="footer-copy">© 2026 ShopLite</p>
+  </footer>
+
+    <script type="module" src="/src/cart-page.ts"></script>
+</body>
+</html>
