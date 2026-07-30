@@ -1,6 +1,6 @@
 # ShopLite
 
-Mini shop e-commerce. Mỗi thư mục là một phiên bản nâng dần của cùng một sản phẩm.
+Shop e-commerce. Mỗi thư mục là một phiên bản nâng dần của cùng một sản phẩm.
 
 | Version | Stack | Ghi chú |
 |---------|-------|--------|
