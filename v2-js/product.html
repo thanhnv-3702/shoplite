@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Áo thun cotton basic — ShopLite</title>
+  <title>Chi tiết sản phẩm — ShopLite</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,7 +21,7 @@
         </ul>
       </nav>
 
-      <form class="search" role="search" action="#" method="get" onsubmit="return false;">
+      <form class="search" role="search" action="index.html" method="get">
         <label class="visually-hidden" for="q">Tìm sản phẩm</label>
         <input id="q" type="search" name="q" placeholder="Tìm sản phẩm…" autocomplete="off">
       </form>
@@ -29,9 +29,9 @@
       <div class="header-actions">
         <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Bật chế độ tối">🌙</button>
         <a class="btn btn-ghost" href="#">Đăng nhập</a>
-        <a class="cart-link" href="cart.html" aria-label="Giỏ hàng, 3 sản phẩm">
+        <a class="cart-link" href="cart.html" aria-label="Giỏ hàng, 0 sản phẩm">
           <span class="cart-icon" aria-hidden="true">🛒</span>
-          <span class="cart-badge">3</span>
+          <span class="cart-badge" hidden>0</span>
         </a>
       </div>
     </div>
@@ -43,49 +43,11 @@
       <span class="sep" aria-hidden="true">/</span>
       <a href="index.html">Sản phẩm</a>
       <span class="sep" aria-hidden="true">/</span>
-      <span aria-current="page">Áo thun cotton basic</span>
+      <span id="breadcrumb-current" aria-current="page">…</span>
     </nav>
 
-    <article class="product-detail" aria-labelledby="product-title">
-      <div class="product-detail-gallery">
-        <img
-          class="product-detail-image"
-          src="https://picsum.photos/seed/sl1/800/1000"
-          alt="Áo thun cotton basic màu kem — ảnh sản phẩm"
-          width="800"
-          height="1000"
-        >
-      </div>
-
-      <div class="product-detail-info">
-        <p class="card-cat">Áo</p>
-        <h1 id="product-title">Áo thun cotton basic</h1>
-        <p class="product-rating" aria-label="Đánh giá 4.6 trên 5">★★★★☆ <span>4.6 (214 đánh giá)</span></p>
-        <p class="price price-lg">290.000₫</p>
-        <p class="price-old">350.000₫</p>
-
-        <p class="product-desc">
-          Áo thun cotton 100% bo cổ, form regular thoáng mát. Đường may chắc chắn,
-          giặt máy không xù. Phù hợp mặc hàng ngày hoặc phối layer nhẹ.
-        </p>
-
-        <dl class="product-meta">
-          <div>
-            <dt>Màu</dt>
-            <dd>Kem, Trắng, Đen</dd>
-          </div>
-          <div>
-            <dt>Tồn kho</dt>
-            <dd>Còn 48 sản phẩm</dd>
-          </div>
-        </dl>
-
-        <div class="product-actions">
-          <a class="btn btn-lg" href="cart.html">Thêm vào giỏ</a>
-          <a class="btn btn-ghost btn-lg" href="index.html">← Quay lại danh sách</a>
-        </div>
-      </div>
-    </article>
+    <p class="status-message" id="product-status" aria-live="polite"></p>
+    <article class="product-detail" id="product-detail" aria-labelledby="product-title"></article>
   </main>
 
   <footer class="site-footer">
@@ -110,10 +72,10 @@
         <p>Hotline: 1900 0000</p>
       </section>
     </div>
-    <p class="footer-copy">© 2026 ShopLite · Module 2 Day 1</p>
+    <p class="footer-copy">© 2026 ShopLite · Module 2 Day 3</p>
   </footer>
 
   <script src="theme.js"></script>
-  <script type="module" src="main.js"></script>
+  <script type="module" src="product.js"></script>
 </body>
 </html>

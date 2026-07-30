@@ -1,29 +1,35 @@
 # ShopLite — v2-js
 
-**Module 2 — JavaScript** · Day 2: DOM render + event delegation.
+**Module 2 — JavaScript** · ứng dụng động hoàn chỉnh (tag `v2-js`).
 
-Trang danh sách sản phẩm đã render động từ `data.js`, tìm kiếm real-time và bắt click bằng event delegation.
+- Load sản phẩm từ **DummyJSON API**
+- Tìm kiếm real-time
+- Chi tiết sản phẩm theo `?id=`
+- Giỏ hàng **localStorage** (thêm / tăng giảm / xóa, badge, tổng tiền)
 
 ## Chạy local
 
-> ES modules cần HTTP server — không mở `file://` trực tiếp.
+> ES modules + fetch cần HTTP server.
 
 ```bash
 npx serve .
 ```
-
-Mở `index.html` → danh sách sản phẩm được dựng bằng JS và nút "Thêm vào giỏ" sẽ log đúng sản phẩm trong Console.
 
 ## Cấu trúc
 
 ```
 v2-js/
 ├── index.html / product.html / cart.html
-├── style.css
-├── theme.js
-├── data.js                 # export mảng products
-├── utils/productHelpers.js # filterByKeyword, sortByPrice, ...
-└── main.js                 # render DOM, search, event delegation
+├── style.css / theme.js
+├── api.js           # getJSON, fetchProducts, fetchProductById
+├── cart.js          # localStorage cart helpers
+├── main.js          # trang danh sách
+├── product.js       # trang chi tiết
+├── cart-page.js     # trang giỏ hàng
+├── data.js          # mock Day 1 (không còn dùng runtime)
+└── utils/
+    ├── productHelpers.js
+    └── format.js
 ```
 
 ## Tiến độ Module 2
@@ -31,5 +37,5 @@ v2-js/
 | Ngày | Nội dung | Trạng thái |
 |------|----------|------------|
 | Day 1 (Day 04/18) | ES6+, data.js, pure functions | ✅ |
-| Day 2 (Day 05/18) | DOM render động | ✅ |
-| Day 3 | fetch API + localStorage | ⏳ |
+| Day 2 (Day 05/18) | DOM render + event | ✅ |
+| Day 3 (Day 06/18) | Fetch API + localStorage cart | ✅ |
