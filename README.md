@@ -5,7 +5,7 @@ Shop e-commerce. Mỗi thư mục là một phiên bản nâng dần của cùng
 | Version | Stack | Ghi chú |
 |---------|-------|--------|
 | `v1-html/` | HTML, CSS | UI tĩnh |
-| `v2-js/` | JavaScript | API, search, cart |
+| `v2-js/` | JavaScript | API, search, cart (VNĐ) |
 | `v3-ts/` | TypeScript + Vite | *(sắp tới)* |
 | `v4-react/` | React | *(sắp tới)* |
 | `v5-next/` | Next.js | *(sắp tới)* |

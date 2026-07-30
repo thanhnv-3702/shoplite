@@ -7,7 +7,7 @@ import {
 } from "./cart.js";
 import { escapeHTML, formatMoney, setCartBadge } from "./utils/format.js";
 
-const SHIPPING_FEE = 5;
+const SHIPPING_FEE = 30000;
 
 function cartItemHTML(item) {
   const lineTotal = item.price * item.quantity;

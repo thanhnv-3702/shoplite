@@ -81,7 +81,7 @@ async function initProductListPage() {
   meta.textContent = "Đang tải sản phẩm…";
 
   try {
-    allProducts = await fetchProducts(30);
+    allProducts = await fetchProducts();
     if (loadingState) loadingState.hidden = true;
     renderProducts(allProducts, elements, allProducts.length);
   } catch (error) {
