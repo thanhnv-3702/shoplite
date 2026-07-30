@@ -1,4 +1,4 @@
-const CART_KEY = "shoplite-cart";
+const CART_KEY = "shoplite-cart-vnd";
 
 export function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));

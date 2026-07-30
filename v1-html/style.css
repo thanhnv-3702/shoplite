@@ -1,4 +1,4 @@
-/* ShopLite v1-html — Day 3: Responsive polish + design tokens */
+/* ShopLite styles */
 
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap");
 
@@ -45,7 +45,7 @@
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Manrope", system-ui, sans-serif;
 
-  /* aliases (Day 2 compat) */
+  /* legacy aliases */
   --ink: var(--color-text);
   --ink-soft: var(--color-text-soft);
   --muted: var(--color-muted);

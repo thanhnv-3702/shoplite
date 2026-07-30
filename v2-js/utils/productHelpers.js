@@ -1,6 +1,4 @@
-/**
- * Pure functions thao tác mảng sản phẩm — tái dùng từ Day 2 trở đi.
- */
+/** Product list helpers. */
 
 const normalize = (text = "") => text.toLowerCase().trim();
 
