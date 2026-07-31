@@ -3,9 +3,10 @@ import { formatMoney } from "../utils/format";
 
 export interface ProductCardProps {
   product: Product;
+  onAddToCart: (product: Product) => void;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const outOfStock = product.stock === 0;
   const rating =
     typeof product.rating === "number"
@@ -44,6 +45,7 @@ export function ProductCard({ product }: ProductCardProps) {
           <button
             type="button"
             disabled={outOfStock}
+            onClick={() => onAddToCart(product)}
             className={
               outOfStock
                 ? "w-full cursor-not-allowed rounded-lg bg-surface-muted px-3 py-2.5 text-sm font-semibold text-muted"
