@@ -25,8 +25,8 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a className="no-underline hover:text-ink" href="#support">
-                Hỗ trợ
+              <a className="no-underline hover:text-ink" href="#contact">
+                Liên hệ
               </a>
             </li>
           </ul>

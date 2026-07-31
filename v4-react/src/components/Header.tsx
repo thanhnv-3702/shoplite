@@ -1,8 +1,12 @@
+import { SearchBar } from "./SearchBar";
+
 interface HeaderProps {
   cartCount?: number;
+  query: string;
+  onQueryChange: (value: string) => void;
 }
 
-export function Header({ cartCount = 0 }: HeaderProps) {
+export function Header({ cartCount = 0, query, onQueryChange }: HeaderProps) {
   const cartLabel =
     cartCount > 0 ? `Giỏ hàng, ${cartCount} sản phẩm` : "Giỏ hàng, trống";
 
@@ -40,23 +44,9 @@ export function Header({ cartCount = 0 }: HeaderProps) {
           </ul>
         </nav>
 
-        <form
-          className="order-4 w-full flex-1 md:order-none md:max-w-xs lg:max-w-sm"
-          role="search"
-          onSubmit={(event) => event.preventDefault()}
-        >
-          <label className="sr-only" htmlFor="q">
-            Tìm sản phẩm
-          </label>
-          <input
-            id="q"
-            type="search"
-            name="q"
-            placeholder="Tìm sản phẩm…"
-            autoComplete="off"
-            className="w-full rounded-lg border border-line bg-bg px-3 py-2 text-sm text-ink outline-none placeholder:text-muted focus:border-ink"
-          />
-        </form>
+        <div className="order-4 w-full flex-1 md:order-none md:max-w-xs lg:max-w-sm">
+          <SearchBar value={query} onChange={onQueryChange} />
+        </div>
 
         <div className="ml-auto flex items-center gap-2 md:gap-3">
           <a

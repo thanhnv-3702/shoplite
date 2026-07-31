@@ -1,6 +1,11 @@
 # ShopLite — v4-react
 
-Phiên bản React + TypeScript + Tailwind (Vite). Module 4 Day 1: component hóa UI bằng JSX/props.
+Phiên bản React + TypeScript + Tailwind (Vite).
+
+## Ngày học
+
+- Day 1: component / JSX / props
+- Day 2: `useState`, events, search + giỏ tạm, form RHF + Zod
 
 ## Chạy local
 
@@ -12,9 +17,8 @@ npm run dev
 
 ## Cấu trúc chính
 
-- `src/types.ts` — `Product`, `CartItem`
-- `src/data.ts` — danh sách sản phẩm hardcode (VNĐ)
-- `src/components/Header.tsx` — logo, search UI, badge giỏ
-- `src/components/ProductCard.tsx` — card sản phẩm + conditional “Hết hàng”
-- `src/components/ProductList.tsx` — lưới Tailwind responsive
-- `src/App.tsx` — ghép layout trang chủ
+- `src/App.tsx` — state tìm kiếm + giỏ tạm (lift state up)
+- `src/components/SearchBar.tsx` — controlled search
+- `src/components/ProductCard.tsx` — callback `onAddToCart`
+- `src/components/LoginForm.tsx` / `ContactForm.tsx` — RHF + Zod
+- `src/schemas/loginSchema.ts` — schema tái dùng
