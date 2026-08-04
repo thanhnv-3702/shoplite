@@ -1,24 +1,30 @@
+import type { MouseEvent } from "react";
+import { useTheme } from "../context/ThemeContext";
+import {
+  selectCartCount,
+  selectCartTotal,
+  useCartStore,
+} from "../store/cartStore";
+import { formatMoney } from "../utils/format";
 import { SearchBar } from "./SearchBar";
 
 interface HeaderProps {
-  cartCount?: number;
   query: string;
   onQueryChange: (value: string) => void;
   onGoHome?: () => void;
 }
 
-export function Header({
-  cartCount = 0,
-  query,
-  onQueryChange,
-  onGoHome,
-}: HeaderProps) {
-  const cartLabel =
-    cartCount > 0 ? `Giỏ hàng, ${cartCount} sản phẩm` : "Giỏ hàng, trống";
+export function Header({ query, onQueryChange, onGoHome }: HeaderProps) {
+  const cartCount = useCartStore(selectCartCount);
+  const cartTotal = useCartStore(selectCartTotal);
+  const { theme, toggleTheme } = useTheme();
 
-  function handleHomeClick(
-    event: React.MouseEvent<HTMLAnchorElement>,
-  ) {
+  const cartLabel =
+    cartCount > 0
+      ? `Giỏ hàng, ${cartCount} sản phẩm, ${formatMoney(cartTotal)}`
+      : "Giỏ hàng, trống";
+
+  function handleHomeClick(event: MouseEvent<HTMLAnchorElement>) {
     if (!onGoHome) return;
     event.preventDefault();
     onGoHome();
@@ -39,10 +45,17 @@ export function Header({
           </span>
         </a>
 
-        <nav className="order-3 hidden w-full md:order-none md:block md:w-auto" aria-label="Menu chính">
+        <nav
+          className="order-3 hidden w-full md:order-none md:block md:w-auto"
+          aria-label="Menu chính"
+        >
           <ul className="flex list-none gap-5 p-0 text-sm font-semibold text-ink-soft">
             <li>
-              <a className="text-ink no-underline" href="/" onClick={handleHomeClick}>
+              <a
+                className="text-ink no-underline"
+                href="/"
+                onClick={handleHomeClick}
+              >
                 Sản phẩm
               </a>
             </li>
@@ -64,6 +77,15 @@ export function Header({
         </div>
 
         <div className="ml-auto flex items-center gap-2 md:gap-3">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-pressed={theme === "dark"}
+            aria-label={theme === "dark" ? "Bật chế độ sáng" : "Bật chế độ tối"}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-bg text-base"
+          >
+            {theme === "dark" ? "☀️" : "🌙"}
+          </button>
           <a
             className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-ink-soft no-underline hover:bg-surface-muted hover:text-ink sm:inline-block"
             href="#login"
@@ -71,15 +93,20 @@ export function Header({
             Đăng nhập
           </a>
           <a
-            className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-bg text-lg no-underline"
+            className="relative inline-flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-lg border border-line bg-bg px-2 text-lg no-underline"
             href="#cart"
             aria-label={cartLabel}
           >
             <span aria-hidden="true">🛒</span>
             {cartCount > 0 && (
-              <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[11px] font-bold text-white">
-                {cartCount}
-              </span>
+              <>
+                <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[11px] font-bold text-white">
+                  {cartCount}
+                </span>
+                <span className="hidden text-xs font-semibold text-ink md:inline">
+                  {formatMoney(cartTotal)}
+                </span>
+              </>
             )}
           </a>
         </div>
