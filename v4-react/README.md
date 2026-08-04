@@ -4,9 +4,9 @@ Phiên bản React + TypeScript + Tailwind (Vite).
 
 ## Ngày học
 
-- Day 1: component / JSX / props
-- Day 2: `useState`, events, search + giỏ tạm, form RHF + Zod
-- Day 3: TanStack Query — server state (sản phẩm) vs client state (giỏ)
+- Day 1–2: component, state, form
+- Day 3: TanStack Query (server state)
+- Day 4: Theme Context + Zustand cart (`persist` → `localStorage`)
 
 ## Chạy local
 
@@ -16,9 +16,12 @@ npm install
 npm run dev
 ```
 
-## Cấu trúc chính
+## Phân vai state
 
-- `public/products.json` — catalog VNĐ (fetch qua TanStack Query)
-- `src/hooks/useProducts.ts` / `useProduct.ts` — custom hooks bọc `useQuery`
-- `src/components/ProductDetail.tsx` — trang chi tiết (`?id=`)
-- Giỏ hàng vẫn là client state trong `App` (Day 12 sẽ chuyển store)
+| State | Loại | Công cụ |
+|-------|------|---------|
+| Sản phẩm | Server | TanStack Query |
+| Giỏ hàng | Client global | Zustand + persist |
+| Theme | Client shared | Context |
+| Search query | Local (sau → URL) | `useState` |
+| Login/Contact | Form | RHF + Zod |

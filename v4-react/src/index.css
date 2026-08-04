@@ -13,6 +13,17 @@
   --color-accent: #ff4438;
 }
 
+html.dark {
+  --color-ink: #f4f4f6;
+  --color-ink-soft: #c8c8d0;
+  --color-muted: #8b8b95;
+  --color-line: #2e2e38;
+  --color-surface: #1a1a20;
+  --color-bg: #0f0f12;
+  --color-surface-muted: #25252e;
+  --color-accent: #ff4438;
+}
+
 html,
 body,
 #root {

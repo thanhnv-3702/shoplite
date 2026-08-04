@@ -1,5 +1,5 @@
 import { useProduct } from "../hooks/useProduct";
-import type { Product } from "../types";
+import { useCartStore } from "../store/cartStore";
 import { formatMoney } from "../utils/format";
 import { DetailSkeleton } from "./ProductSkeleton";
 import { QueryError } from "./QueryError";
@@ -7,14 +7,10 @@ import { QueryError } from "./QueryError";
 interface ProductDetailProps {
   productId: number;
   onBack: () => void;
-  onAddToCart: (product: Product) => void;
 }
 
-export function ProductDetail({
-  productId,
-  onBack,
-  onAddToCart,
-}: ProductDetailProps) {
+export function ProductDetail({ productId, onBack }: ProductDetailProps) {
+  const addToCart = useCartStore((state) => state.addToCart);
   const { data: product, isLoading, isError, error, refetch } =
     useProduct(productId);
 
@@ -98,7 +94,7 @@ export function ProductDetail({
             <button
               type="button"
               disabled={outOfStock}
-              onClick={() => onAddToCart(product)}
+              onClick={() => addToCart(product)}
               className={
                 outOfStock
                   ? "cursor-not-allowed rounded-lg bg-surface-muted px-5 py-3 text-sm font-semibold text-muted"

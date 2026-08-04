@@ -1,17 +1,14 @@
+import { useCartStore } from "../store/cartStore";
 import type { Product } from "../types";
 import { formatMoney } from "../utils/format";
 
 export interface ProductCardProps {
   product: Product;
-  onAddToCart: (product: Product) => void;
   onOpenProduct: (id: number) => void;
 }
 
-export function ProductCard({
-  product,
-  onAddToCart,
-  onOpenProduct,
-}: ProductCardProps) {
+export function ProductCard({ product, onOpenProduct }: ProductCardProps) {
+  const addToCart = useCartStore((state) => state.addToCart);
   const outOfStock = product.stock === 0;
   const rating =
     typeof product.rating === "number"
@@ -61,7 +58,7 @@ export function ProductCard({
           <button
             type="button"
             disabled={outOfStock}
-            onClick={() => onAddToCart(product)}
+            onClick={() => addToCart(product)}
             className={
               outOfStock
                 ? "w-full cursor-not-allowed rounded-lg bg-surface-muted px-3 py-2.5 text-sm font-semibold text-muted"
