@@ -4,9 +4,14 @@ import { formatMoney } from "../utils/format";
 export interface ProductCardProps {
   product: Product;
   onAddToCart: (product: Product) => void;
+  onOpenProduct: (id: number) => void;
 }
 
-export function ProductCard({ product, onAddToCart }: ProductCardProps) {
+export function ProductCard({
+  product,
+  onAddToCart,
+  onOpenProduct,
+}: ProductCardProps) {
   const outOfStock = product.stock === 0;
   const rating =
     typeof product.rating === "number"
@@ -15,10 +20,15 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-surface transition hover:-translate-y-0.5 hover:border-ink/20 hover:shadow-sm">
-      <div className="relative aspect-[4/5] overflow-hidden bg-surface-muted">
+      <button
+        type="button"
+        onClick={() => onOpenProduct(product.id)}
+        className="relative aspect-[4/5] overflow-hidden bg-surface-muted text-left"
+        aria-label={`Xem ${product.title}`}
+      >
         <img
           src={product.thumbnail}
-          alt={product.title}
+          alt=""
           width={400}
           height={500}
           loading="lazy"
@@ -29,14 +39,20 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             Hết hàng
           </span>
         )}
-      </div>
+      </button>
 
       <div className="flex flex-1 flex-col gap-2 p-3 md:p-4">
         <p className="text-xs font-semibold uppercase tracking-wide text-muted">
           {product.category}
         </p>
         <h2 className="font-display text-base font-semibold leading-snug text-ink md:text-lg">
-          {product.title}
+          <button
+            type="button"
+            onClick={() => onOpenProduct(product.id)}
+            className="text-left hover:underline"
+          >
+            {product.title}
+          </button>
         </h2>
         <p className="text-sm font-bold text-ink">{formatMoney(product.price)}</p>
         <p className="text-sm text-ink-soft">★ {rating}</p>
