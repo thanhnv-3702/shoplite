@@ -4,9 +4,14 @@ import { ProductCard } from "./ProductCard";
 export interface ProductListProps {
   products: Product[];
   onAddToCart: (product: Product) => void;
+  onOpenProduct: (id: number) => void;
 }
 
-export function ProductList({ products, onAddToCart }: ProductListProps) {
+export function ProductList({
+  products,
+  onAddToCart,
+  onOpenProduct,
+}: ProductListProps) {
   if (products.length === 0) {
     return (
       <p className="rounded-xl border border-dashed border-line bg-surface px-4 py-10 text-center text-ink-soft">
@@ -22,6 +27,7 @@ export function ProductList({ products, onAddToCart }: ProductListProps) {
           key={product.id}
           product={product}
           onAddToCart={onAddToCart}
+          onOpenProduct={onOpenProduct}
         />
       ))}
     </div>

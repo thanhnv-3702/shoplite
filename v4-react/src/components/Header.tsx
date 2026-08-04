@@ -4,17 +4,32 @@ interface HeaderProps {
   cartCount?: number;
   query: string;
   onQueryChange: (value: string) => void;
+  onGoHome?: () => void;
 }
 
-export function Header({ cartCount = 0, query, onQueryChange }: HeaderProps) {
+export function Header({
+  cartCount = 0,
+  query,
+  onQueryChange,
+  onGoHome,
+}: HeaderProps) {
   const cartLabel =
     cartCount > 0 ? `Giỏ hàng, ${cartCount} sản phẩm` : "Giỏ hàng, trống";
+
+  function handleHomeClick(
+    event: React.MouseEvent<HTMLAnchorElement>,
+  ) {
+    if (!onGoHome) return;
+    event.preventDefault();
+    onGoHome();
+  }
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
       <div className="mx-auto flex min-h-[72px] max-w-6xl flex-wrap items-center gap-3 px-4 py-3 md:gap-4 md:px-6">
         <a
           href="/"
+          onClick={handleHomeClick}
           className="font-display text-xl font-bold tracking-tight text-ink no-underline md:text-2xl"
           aria-label="ShopLite trang chủ"
         >
@@ -27,7 +42,7 @@ export function Header({ cartCount = 0, query, onQueryChange }: HeaderProps) {
         <nav className="order-3 hidden w-full md:order-none md:block md:w-auto" aria-label="Menu chính">
           <ul className="flex list-none gap-5 p-0 text-sm font-semibold text-ink-soft">
             <li>
-              <a className="text-ink no-underline" href="/">
+              <a className="text-ink no-underline" href="/" onClick={handleHomeClick}>
                 Sản phẩm
               </a>
             </li>
