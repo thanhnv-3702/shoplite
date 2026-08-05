@@ -7,7 +7,7 @@ Shop e-commerce. Mỗi thư mục là một phiên bản nâng dần của cùng
 | `v1-html/` | HTML, CSS | UI tĩnh |
 | `v2-js/` | JavaScript | API, search, cart (VNĐ) |
 | `v3-ts/` | TypeScript + Vite | Type-safe shop |
-| `v4-react/` | React + Vite + Tailwind | Component, JSX, props |
+| `v4-react/` | React + Vite + Tailwind | SPA: router, TQ, Zustand |
 | `v5-next/` | Next.js | *(sắp tới)* |
 
 ## API

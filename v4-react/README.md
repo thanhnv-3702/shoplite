@@ -1,12 +1,6 @@
 # ShopLite — v4-react
 
-Phiên bản React + TypeScript + Tailwind (Vite).
-
-## Ngày học
-
-- Day 1–2: component, state, form
-- Day 3: TanStack Query (server state)
-- Day 4: Theme Context + Zustand cart (`persist` → `localStorage`)
+SPA React + TypeScript + Tailwind (Vite). Tag milestone: `v4-react`.
 
 ## Chạy local
 
@@ -16,12 +10,22 @@ npm install
 npm run dev
 ```
 
-## Phân vai state
+## Routes
 
-| State | Loại | Công cụ |
-|-------|------|---------|
-| Sản phẩm | Server | TanStack Query |
-| Giỏ hàng | Client global | Zustand + persist |
-| Theme | Client shared | Context |
-| Search query | Local (sau → URL) | `useState` |
-| Login/Contact | Form | RHF + Zod |
+| Path | Page |
+|------|------|
+| `/` | Danh sách sản phẩm |
+| `/product/:id` | Chi tiết |
+| `/cart` | Giỏ hàng |
+| `*` | 404 |
+
+Pages được `React.lazy` + `Suspense` (code-split theo route).
+
+## State
+
+| State | Công cụ |
+|-------|---------|
+| Sản phẩm | TanStack Query |
+| Giỏ | Zustand + persist |
+| Theme | Context |
+| Search | `useState` ở layout (+ `useMemo` lọc) |

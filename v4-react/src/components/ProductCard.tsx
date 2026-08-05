@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useCartStore } from "../store/cartStore";
 import type { Product } from "../types";
 import { formatMoney } from "../utils/format";
@@ -7,7 +8,10 @@ export interface ProductCardProps {
   onOpenProduct: (id: number) => void;
 }
 
-export function ProductCard({ product, onOpenProduct }: ProductCardProps) {
+export const ProductCard = memo(function ProductCard({
+  product,
+  onOpenProduct,
+}: ProductCardProps) {
   const addToCart = useCartStore((state) => state.addToCart);
   const outOfStock = product.stock === 0;
   const rating =
@@ -71,4 +75,4 @@ export function ProductCard({ product, onOpenProduct }: ProductCardProps) {
       </div>
     </article>
   );
-}
+});

@@ -1,4 +1,4 @@
-import type { MouseEvent } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext";
 import {
   selectCartCount,
@@ -11,10 +11,9 @@ import { SearchBar } from "./SearchBar";
 interface HeaderProps {
   query: string;
   onQueryChange: (value: string) => void;
-  onGoHome?: () => void;
 }
 
-export function Header({ query, onQueryChange, onGoHome }: HeaderProps) {
+export function Header({ query, onQueryChange }: HeaderProps) {
   const cartCount = useCartStore(selectCartCount);
   const cartTotal = useCartStore(selectCartTotal);
   const { theme, toggleTheme } = useTheme();
@@ -24,18 +23,11 @@ export function Header({ query, onQueryChange, onGoHome }: HeaderProps) {
       ? `Giỏ hàng, ${cartCount} sản phẩm, ${formatMoney(cartTotal)}`
       : "Giỏ hàng, trống";
 
-  function handleHomeClick(event: MouseEvent<HTMLAnchorElement>) {
-    if (!onGoHome) return;
-    event.preventDefault();
-    onGoHome();
-  }
-
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
       <div className="mx-auto flex min-h-[72px] max-w-6xl flex-wrap items-center gap-3 px-4 py-3 md:gap-4 md:px-6">
-        <a
-          href="/"
-          onClick={handleHomeClick}
+        <Link
+          to="/"
           className="font-display text-xl font-bold tracking-tight text-ink no-underline md:text-2xl"
           aria-label="ShopLite trang chủ"
         >
@@ -43,7 +35,7 @@ export function Header({ query, onQueryChange, onGoHome }: HeaderProps) {
           <span className="text-accent" aria-hidden="true">
             .
           </span>
-        </a>
+        </Link>
 
         <nav
           className="order-3 hidden w-full md:order-none md:block md:w-auto"
@@ -51,18 +43,29 @@ export function Header({ query, onQueryChange, onGoHome }: HeaderProps) {
         >
           <ul className="flex list-none gap-5 p-0 text-sm font-semibold text-ink-soft">
             <li>
-              <a
-                className="text-ink no-underline"
-                href="/"
-                onClick={handleHomeClick}
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-ink no-underline"
+                    : "no-underline hover:text-ink"
+                }
               >
                 Sản phẩm
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a className="no-underline hover:text-ink" href="#promo">
-                Khuyến mãi
-              </a>
+              <NavLink
+                to="/cart"
+                className={({ isActive }) =>
+                  isActive
+                    ? "text-ink no-underline"
+                    : "no-underline hover:text-ink"
+                }
+              >
+                Giỏ hàng
+              </NavLink>
             </li>
             <li>
               <a className="no-underline hover:text-ink" href="#about">
@@ -92,9 +95,9 @@ export function Header({ query, onQueryChange, onGoHome }: HeaderProps) {
           >
             Đăng nhập
           </a>
-          <a
+          <Link
+            to="/cart"
             className="relative inline-flex h-10 min-w-10 items-center justify-center gap-1.5 rounded-lg border border-line bg-bg px-2 text-lg no-underline"
-            href="#cart"
             aria-label={cartLabel}
           >
             <span aria-hidden="true">🛒</span>
@@ -108,7 +111,7 @@ export function Header({ query, onQueryChange, onGoHome }: HeaderProps) {
                 </span>
               </>
             )}
-          </a>
+          </Link>
         </div>
       </div>
     </header>

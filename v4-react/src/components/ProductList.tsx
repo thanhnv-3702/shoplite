@@ -1,3 +1,4 @@
+import { memo } from "react";
 import type { Product } from "../types";
 import { ProductCard } from "./ProductCard";
 
@@ -6,7 +7,10 @@ export interface ProductListProps {
   onOpenProduct: (id: number) => void;
 }
 
-export function ProductList({ products, onOpenProduct }: ProductListProps) {
+export const ProductList = memo(function ProductList({
+  products,
+  onOpenProduct,
+}: ProductListProps) {
   if (products.length === 0) {
     return (
       <p className="rounded-xl border border-dashed border-line bg-surface px-4 py-10 text-center text-ink-soft">
@@ -26,4 +30,4 @@ export function ProductList({ products, onOpenProduct }: ProductListProps) {
       ))}
     </div>
   );
-}
+});
