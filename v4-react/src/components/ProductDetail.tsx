@@ -50,13 +50,13 @@ export function ProductDetail({ productId, onBack }: ProductDetailProps) {
 
   return (
     <section aria-labelledby="product-detail-title">
-      <button
-        type="button"
-        onClick={onBack}
-        className="mb-6 text-sm font-semibold text-ink-soft transition hover:text-ink"
-      >
-        ← Quay lại danh sách
-      </button>
+        <button
+          type="button"
+          onClick={onBack}
+          className="mb-6 text-sm font-semibold text-ink-soft transition hover:text-ink"
+        >
+          ← Quay lại
+        </button>
 
       <div className="grid gap-8 md:grid-cols-2 md:items-start">
         <div className="overflow-hidden rounded-2xl border border-line bg-surface-muted">

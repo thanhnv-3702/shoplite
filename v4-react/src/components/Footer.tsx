@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function Footer() {
   return (
     <footer className="mt-auto border-t border-line bg-surface">
@@ -15,14 +17,14 @@ export function Footer() {
           </h2>
           <ul className="mt-2 list-none space-y-1 p-0 text-sm text-ink-soft">
             <li>
-              <a className="no-underline hover:text-ink" href="/">
+              <Link className="no-underline hover:text-ink" to="/">
                 Trang chủ
-              </a>
+              </Link>
             </li>
             <li>
-              <a className="no-underline hover:text-ink" href="#about">
-                Về chúng tôi
-              </a>
+              <Link className="no-underline hover:text-ink" to="/cart">
+                Giỏ hàng
+              </Link>
             </li>
             <li>
               <a className="no-underline hover:text-ink" href="#contact">
