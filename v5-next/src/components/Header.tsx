@@ -2,15 +2,21 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { Suspense } from "react";
 import { SearchBar } from "./SearchBar";
 
+function SearchBarFallback() {
+  return (
+    <div className="h-9 w-full animate-pulse rounded-lg border border-line bg-bg" />
+  );
+}
+
+/**
+ * Client Component — cần pathname + SearchBar (hooks/events).
+ * Product list vẫn là Server Component ở page.tsx.
+ */
 export function Header() {
   const pathname = usePathname();
-  const [query, setQuery] = useState("");
-
-  // Client Component — log này hiện ở console trình duyệt
-  console.log("[client] Header render", pathname);
 
   return (
     <header className="sticky top-0 z-20 border-b border-line bg-surface/95 backdrop-blur">
@@ -71,7 +77,9 @@ export function Header() {
         </nav>
 
         <div className="order-4 w-full flex-1 md:order-none md:max-w-xs lg:max-w-sm">
-          <SearchBar value={query} onChange={setQuery} />
+          <Suspense fallback={<SearchBarFallback />}>
+            <SearchBar />
+          </Suspense>
         </div>
 
         <div className="ml-auto flex items-center gap-2 md:gap-3">
