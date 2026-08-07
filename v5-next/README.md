@@ -1,6 +1,12 @@
 # ShopLite — v5-next
 
-Next.js App Router + TypeScript + Tailwind. Module 5 Day 1: khung layout & routes.
+Next.js App Router + TypeScript + Tailwind.
+
+## Day 15
+
+- Trang chủ `/` = Server Component: fetch catalog + lọc theo `?q=`
+- `ProductCard` server; `SearchBar` + `AddToCartButton` = `'use client'`
+- `export const revalidate = 60` (ISR); `generateStaticParams` cho vài `/product/[id]`
 
 ## Chạy local
 
@@ -10,21 +16,10 @@ npm install
 npm run dev
 ```
 
-Mở [http://localhost:3000](http://localhost:3000).
-
-## Routes (khung)
-
-| Path | Mô tả |
-|------|--------|
-| `/` | Danh sách sản phẩm (placeholder) |
-| `/product/[id]` | Chi tiết |
-| `/cart` | Giỏ hàng |
-| `/checkout` | Thanh toán |
-| `/login` | Đăng nhập |
-| `/orders` | Đơn hàng + layout lồng |
-| `/orders/[orderId]` | Chi tiết đơn (nested) |
-
 ## Server vs Client
 
-- `page.tsx` mặc định = Server Component → `console.log` hiện ở **terminal**.
-- `Header` (`'use client'`) → log hiện ở **console trình duyệt**.
+| Phần | Chạy ở | Vì sao |
+|------|--------|--------|
+| `page.tsx` / `ProductList` / `ProductCard` | Server | Không hook/event; HTML có sẵn cho SEO |
+| `SearchBar` | Client | `useState`, `onChange`, URL |
+| `AddToCartButton` | Client | `onClick`, `useState` |
