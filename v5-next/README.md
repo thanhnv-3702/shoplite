@@ -2,11 +2,12 @@
 
 Next.js App Router + TypeScript + Tailwind.
 
-## Day 15
+## Day 16
 
-- Trang chủ `/` = Server Component: fetch catalog + lọc theo `?q=`
-- `ProductCard` server; `SearchBar` + `AddToCartButton` = `'use client'`
-- `export const revalidate = 60` (ISR); `generateStaticParams` cho vài `/product/[id]`
+- `loading.tsx` / `error.tsx` / `not-found.tsx` cho trang chủ & chi tiết
+- `POST /api/orders` — Route Handler tạo đơn mẫu
+- `middleware.ts` bảo vệ `/orders`, `/checkout` (cookie demo)
+- Login demo set cookie → middleware cho qua
 
 ## Chạy local
 
@@ -16,10 +17,16 @@ npm install
 npm run dev
 ```
 
-## Server vs Client
+## Auth demo
 
-| Phần | Chạy ở | Vì sao |
-|------|--------|--------|
-| `page.tsx` / `ProductList` / `ProductCard` | Server | Không hook/event; HTML có sẵn cho SEO |
-| `SearchBar` | Client | `useState`, `onChange`, URL |
-| `AddToCartButton` | Client | `onClick`, `useState` |
+1. Vào `/orders` → redirect `/login?from=/orders`
+2. Đăng nhập demo → cookie `shoplite-session=demo`
+3. Vào `/checkout` → form gọi `POST /api/orders`
+
+## API
+
+```bash
+curl -X POST http://localhost:3000/api/orders \
+  -H 'Content-Type: application/json' \
+  -d '{"items":[{"id":1,"title":"Áo thun","price":290000,"quantity":1}]}'
+```
