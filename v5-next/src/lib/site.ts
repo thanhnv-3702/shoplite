@@ -1,0 +1,13 @@
+/** URL public — AUTH_URL khi có, không thì hostname Vercel / localhost. */
+export function getSiteUrl(): string {
+  const explicit = process.env.AUTH_URL?.replace(/\/$/, "");
+  if (explicit) return explicit;
+
+  const production = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+  if (production) return `https://${production}`;
+
+  const preview = process.env.VERCEL_URL;
+  if (preview) return `https://${preview}`;
+
+  return "http://localhost:3000";
+}

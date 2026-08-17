@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CategoryFilter } from "@/components/CategoryFilter";
 import { ProductList } from "@/components/ProductList";
 import {
@@ -9,6 +10,16 @@ import { getProducts } from "@/lib/products";
 
 /** ISR: làm mới dữ liệu trang chủ mỗi 60s (mô phỏng cache/revalidate). */
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "Sản phẩm",
+  description:
+    "Danh sách sản phẩm ShopLite — tìm kiếm, lọc danh mục, thêm vào giỏ.",
+  openGraph: {
+    title: "Sản phẩm ShopLite",
+    description: "Cửa hàng tiện ích cho mọi nhà.",
+  },
+};
 
 interface HomePageProps {
   searchParams: Promise<{ q?: string; category?: string }>;

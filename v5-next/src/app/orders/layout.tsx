@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { auth } from "@/auth";
+
+export const metadata: Metadata = {
+  title: "Đơn hàng",
+  description: "Đơn hàng của tài khoản ShopLite đang đăng nhập.",
+  robots: { index: false, follow: false },
+};
 
 export default async function OrdersLayout({
   children,

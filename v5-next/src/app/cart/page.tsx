@@ -1,4 +1,22 @@
-import { CartView } from "@/components/CartView";
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
+
+export const metadata: Metadata = {
+  title: "Giỏ hàng",
+  description: "Giỏ hàng ShopLite — chỉnh số lượng và thanh toán.",
+  robots: { index: false, follow: true },
+};
+
+const CartView = dynamic(
+  () => import("@/components/CartView").then((mod) => mod.CartView),
+  {
+    loading: () => (
+      <p className="mt-8 text-sm text-muted" aria-busy="true">
+        Đang tải giỏ hàng…
+      </p>
+    ),
+  },
+);
 
 export default function CartPage() {
   return (

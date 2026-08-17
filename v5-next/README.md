@@ -2,19 +2,19 @@
 
 Next.js App Router + TypeScript + Tailwind.
 
-## Day 17
+## Day 18
 
-- Auth.js Credentials — session JWT, Header hiện tên + đăng xuất
-- Middleware đọc session (không còn cookie demo) — bảo vệ `/orders`, `/checkout`
-- Zustand cart persist `shoplite-cart-vnd`, `skipHydration` + rehydrate trong `Providers`
-- Checkout RHF + Zod → `POST /api/orders` (cùng schema) → xóa giỏ
-- URL state: `/?q=...&category=...`
+- `generateMetadata` cho từng sản phẩm; metadata tĩnh layout/trang
+- `sitemap.xml` / `robots.txt`
+- `next/image` (kể cả giỏ) + `next/font` (`display: swap`)
+- `next/dynamic` cho CartView / CheckoutForm
+- Deploy: Root Directory Vercel = `v5-next`
 
 ## Chạy local
 
 ```bash
 cd v5-next
-cp .env.example .env.local   # tuỳ chọn — AUTH_SECRET có fallback khi dev
+cp .env.example .env.local
 npm install
 npm run dev
 ```
@@ -24,18 +24,17 @@ npm run dev
 - Email: `thanhg@shoplite.com`
 - Mật khẩu: `shoplite123`
 
+## Deploy Vercel
+
+1. Import repo `thanhnv-3702/shoplite`
+2. Root Directory: `v5-next`
+3. Env: `AUTH_SECRET`, `AUTH_URL` (URL production)
+4. Deploy
+
 ## Luồng mua hàng
 
 1. Đăng nhập tại `/login`
 2. Tìm/lọc trên URL (`?q=` / `category=`)
 3. Thêm giỏ → `/cart`
-4. `/checkout` (middleware yêu cầu session) → đặt hàng
-5. Trang thành công xóa giỏ; xem `/orders`
-
-## API
-
-Cần cookie session Auth.js. Ví dụ sau khi đã login trên browser, hoặc gọi kèm cookie:
-
-```bash
-curl http://localhost:3000/api/orders
-```
+4. `/checkout` → đặt hàng → giỏ được xóa
+5. `/orders`

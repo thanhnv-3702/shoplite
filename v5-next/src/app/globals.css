@@ -5,12 +5,12 @@
   --font-display: var(--font-space-grotesk), system-ui, sans-serif;
   --color-ink: #14141a;
   --color-ink-soft: #45454f;
-  --color-muted: #8b8b95;
+  --color-muted: #5a5a63;
   --color-line: #e9e7e1;
   --color-surface: #ffffff;
   --color-bg: #f7f5f0;
   --color-surface-muted: #efece4;
-  --color-accent: #ff4438;
+  --color-accent: #c4251d;
 }
 
 html,
