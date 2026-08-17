@@ -1,5 +1,23 @@
+import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 import { auth } from "@/auth";
-import { CheckoutForm } from "@/components/CheckoutForm";
+
+export const metadata: Metadata = {
+  title: "Thanh toán",
+  description: "Đặt hàng ShopLite — họ tên, email, số điện thoại, địa chỉ.",
+  robots: { index: false, follow: false },
+};
+
+const CheckoutForm = dynamic(
+  () => import("@/components/CheckoutForm").then((mod) => mod.CheckoutForm),
+  {
+    loading: () => (
+      <p className="mt-8 text-sm text-muted" aria-busy="true">
+        Đang tải form thanh toán…
+      </p>
+    ),
+  },
+);
 
 export default async function CheckoutPage() {
   const session = await auth();

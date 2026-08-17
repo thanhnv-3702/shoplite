@@ -31,7 +31,7 @@ export function Header() {
         </Link>
 
         <nav
-          className="order-3 hidden w-full md:order-none md:block md:w-auto"
+          className="order-3 w-full md:order-none md:w-auto"
           aria-label="Menu chính"
         >
           <ul className="flex list-none gap-5 p-0 text-sm font-semibold text-ink-soft">

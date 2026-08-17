@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -9,6 +10,28 @@ export const revalidate = 60;
 
 interface ProductPageProps {
   params: Promise<{ id: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const product = await getProductById(Number(id));
+
+  if (!product) {
+    return { title: "Không tìm thấy sản phẩm" };
+  }
+
+  return {
+    title: product.title,
+    description: product.description,
+    openGraph: {
+      title: product.title,
+      description: product.description,
+      images: [{ url: product.thumbnail, alt: product.title }],
+      type: "website",
+    },
+  };
 }
 
 /** Pre-render một số trang chi tiết lúc build (SSG + generateStaticParams). */
@@ -54,12 +77,33 @@ export default async function ProductPage({ params }: ProductPageProps) {
             alt={product.title}
             width={800}
             height={1000}
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="aspect-[4/5] w-full object-cover"
             priority
           />
         </div>
 
         <div>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: product.title,
+                description: product.description,
+                image: product.thumbnail,
+                offers: {
+                  "@type": "Offer",
+                  priceCurrency: "VND",
+                  price: product.price,
+                  availability: product.stock > 0
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+                },
+              }),
+            }}
+          />
           <p className="text-xs font-semibold uppercase tracking-wide text-muted">
             {product.category}
           </p>

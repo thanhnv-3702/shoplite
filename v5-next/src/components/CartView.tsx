@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { formatMoney } from "@/lib/format";
 import {
@@ -45,13 +46,14 @@ export function CartView() {
           >
             <Link
               href={`/product/${item.id}`}
-              className="h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-surface-muted"
+              className="relative h-24 w-20 shrink-0 overflow-hidden rounded-lg bg-surface-muted"
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={item.thumbnail}
-                alt=""
-                className="h-full w-full object-cover"
+                alt={item.title}
+                fill
+                sizes="80px"
+                className="object-cover"
               />
             </Link>
             <div className="min-w-0 flex-1">

@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import { Suspense } from "react";
 import { LoginForm } from "@/components/LoginForm";
+
+export const metadata: Metadata = {
+  title: "Đăng nhập",
+  description: "Đăng nhập ShopLite để xem đơn hàng và thanh toán.",
+  robots: { index: false, follow: true },
+};
 
 export default function LoginPage() {
   return (
