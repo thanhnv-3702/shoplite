@@ -27,17 +27,15 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "ShopLite — Cửa hàng tiện ích",
+    default: "ShopLite",
     template: "%s · ShopLite",
   },
-  description: "Cửa hàng tiện ích cho mọi nhà. Mua sắm nhanh, giá Việt Nam Đồng.",
-  keywords: ["ShopLite", "cửa hàng", "tiện ích", "mua sắm"],
-  authors: [{ name: "ShopLite" }],
+  description: "Cửa hàng tiện ích cho mọi nhà.",
   openGraph: {
     type: "website",
     locale: "vi_VN",
     siteName: "ShopLite",
-    title: "ShopLite — Cửa hàng tiện ích",
+    title: "ShopLite",
     description: "Cửa hàng tiện ích cho mọi nhà.",
   },
   robots: {

@@ -8,7 +8,6 @@ export const orderItemSchema = z.object({
   thumbnail: z.string().optional(),
 });
 
-/** Form checkout — dùng chung client (RHF) và server (Route Handler). */
 export const checkoutSchema = z.object({
   name: z.string().trim().min(1, "Vui lòng nhập họ tên"),
   email: z

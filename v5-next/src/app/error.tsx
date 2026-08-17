@@ -15,7 +15,7 @@ export default function HomeError({ error, reset }: RouteErrorProps) {
         Không tải được trang
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        {error.message || "Đã có lỗi khi tải danh sách sản phẩm."}
+        {error.message || "Không tải được."}
       </p>
       <button
         type="button"

@@ -1,4 +1,3 @@
-/** User mẫu cho Credentials provider — Day 17. */
 export const DEMO_USER = {
   id: "user-thanhg",
   name: "Thanh",

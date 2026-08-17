@@ -8,7 +8,6 @@ interface AddToCartButtonProps {
   product: Product;
 }
 
-/** Client island — gọi Zustand store. */
 export function AddToCartButton({ product }: AddToCartButtonProps) {
   const addToCart = useCartStore((state) => state.addToCart);
   const [added, setAdded] = useState(false);

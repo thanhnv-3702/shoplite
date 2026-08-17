@@ -4,7 +4,7 @@ import { LoginForm } from "@/components/LoginForm";
 
 export const metadata: Metadata = {
   title: "Đăng nhập",
-  description: "Đăng nhập ShopLite để xem đơn hàng và thanh toán.",
+  description: "Đăng nhập ShopLite.",
   robots: { index: false, follow: true },
 };
 
@@ -18,8 +18,7 @@ export default function LoginPage() {
         Đăng nhập
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        Session Auth.js (JWT cookie). Middleware chặn `/orders` và `/checkout`
-        khi chưa đăng nhập.
+        Đăng nhập để thanh toán và xem đơn hàng.
       </p>
       <Suspense fallback={<p className="mt-8 text-sm text-muted">Đang tải…</p>}>
         <LoginForm />

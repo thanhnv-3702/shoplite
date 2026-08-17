@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 
 export const metadata: Metadata = {
   title: "Thanh toán",
-  description: "Đặt hàng ShopLite — họ tên, email, số điện thoại, địa chỉ.",
+  description: "Thanh toán đơn hàng ShopLite.",
   robots: { index: false, follow: false },
 };
 
@@ -13,7 +13,7 @@ const CheckoutForm = dynamic(
   {
     loading: () => (
       <p className="mt-8 text-sm text-muted" aria-busy="true">
-        Đang tải form thanh toán…
+        Đang tải…
       </p>
     ),
   },
@@ -31,7 +31,7 @@ export default async function CheckoutPage() {
         Thanh toán
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        Form RHF + Zod. Server validate lại bằng cùng schema trước khi lưu đơn.
+        Điền thông tin giao hàng rồi đặt đơn.
       </p>
       <CheckoutForm
         defaultEmail={session?.user?.email ?? ""}

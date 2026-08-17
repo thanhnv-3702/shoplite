@@ -34,7 +34,6 @@ export async function generateMetadata({
   };
 }
 
-/** Pre-render một số trang chi tiết lúc build (SSG + generateStaticParams). */
 export async function generateStaticParams() {
   const products = await getProducts();
   return products.slice(0, 6).map((product) => ({

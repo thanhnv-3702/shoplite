@@ -7,7 +7,6 @@ interface CategoryFilterProps {
   q?: string;
 }
 
-/** Server Component — filter nằm trên URL, share/back/forward giữ được. */
 export function CategoryFilter({
   categories,
   active = "",

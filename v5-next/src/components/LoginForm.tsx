@@ -96,7 +96,7 @@ export function LoginForm() {
       </button>
 
       <p className="text-xs text-muted">
-        Tài khoản mẫu: {DEMO_USER.email} / {DEMO_USER.password}
+        Demo: {DEMO_USER.email} / {DEMO_USER.password}
       </p>
     </form>
   );

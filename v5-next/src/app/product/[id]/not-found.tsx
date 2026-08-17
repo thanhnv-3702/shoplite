@@ -7,7 +7,7 @@ export default function ProductNotFound() {
         Không tìm thấy sản phẩm
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        Sản phẩm không tồn tại hoặc đã ngừng kinh doanh.
+        Không tìm thấy sản phẩm này.
       </p>
       <Link
         href="/"
