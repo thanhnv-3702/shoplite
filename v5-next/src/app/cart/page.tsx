@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 export const metadata: Metadata = {
   title: "Giỏ hàng",
-  description: "Giỏ hàng ShopLite — chỉnh số lượng và thanh toán.",
+  description: "Giỏ hàng ShopLite.",
   robots: { index: false, follow: true },
 };
 
@@ -12,7 +12,7 @@ const CartView = dynamic(
   {
     loading: () => (
       <p className="mt-8 text-sm text-muted" aria-busy="true">
-        Đang tải giỏ hàng…
+        Đang tải…
       </p>
     ),
   },
@@ -28,7 +28,7 @@ export default function CartPage() {
         Giỏ hàng
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        Giỏ lưu trên trình duyệt (Zustand persist). Thanh toán cần đăng nhập.
+        Kiểm tra lại trước khi thanh toán.
       </p>
       <CartView />
     </section>

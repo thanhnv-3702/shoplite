@@ -1,4 +1,3 @@
-/** URL public — AUTH_URL khi có, không thì hostname Vercel / localhost. */
 export function getSiteUrl(): string {
   const explicit = process.env.AUTH_URL?.replace(/\/$/, "");
   if (explicit) return explicit;

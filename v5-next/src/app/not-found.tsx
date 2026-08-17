@@ -7,7 +7,7 @@ export default function NotFound() {
         Không tìm thấy trang
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        Đường dẫn không tồn tại hoặc đã được chuyển đi.
+        Trang này không tồn tại.
       </p>
       <Link
         href="/"
