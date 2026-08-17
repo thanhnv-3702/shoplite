@@ -1,22 +1,29 @@
+import { CategoryFilter } from "@/components/CategoryFilter";
 import { ProductList } from "@/components/ProductList";
-import { filterProductsByKeyword } from "@/lib/format";
+import {
+  filterByCategory,
+  filterProductsByKeyword,
+  uniqueCategories,
+} from "@/lib/format";
 import { getProducts } from "@/lib/products";
 
 /** ISR: làm mới dữ liệu trang chủ mỗi 60s (mô phỏng cache/revalidate). */
 export const revalidate = 60;
 
 interface HomePageProps {
-  searchParams: Promise<{ q?: string }>;
+  searchParams: Promise<{ q?: string; category?: string }>;
 }
 
 /**
  * Server Component — fetch + lọc trên server.
- * View Source sẽ thấy HTML tên/giá sản phẩm có sẵn (không chờ JS).
+ * URL state: `?q=` + `category=` — share/back/forward giữ bộ lọc.
  */
 export default async function HomePage({ searchParams }: HomePageProps) {
-  const { q = "" } = await searchParams;
+  const { q = "", category = "" } = await searchParams;
   const products = await getProducts();
-  const filtered = filterProductsByKeyword(products, q);
+  const categories = uniqueCategories(products);
+  const byQuery = filterProductsByKeyword(products, q);
+  const filtered = filterByCategory(byQuery, category);
 
   return (
     <section aria-labelledby="products-title">
@@ -29,7 +36,10 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <p className="mt-2 text-sm text-ink-soft" aria-live="polite">
         {filtered.length} / {products.length} sản phẩm
         {q.trim() ? ` · “${q.trim()}”` : ""}
+        {category.trim() ? ` · ${category.trim()}` : ""}
       </p>
+
+      <CategoryFilter categories={categories} active={category} q={q} />
 
       <div className="mt-6">
         <ProductList products={filtered} />

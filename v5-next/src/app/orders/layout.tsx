@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { auth } from "@/auth";
 
-export default function OrdersLayout({
+export default async function OrdersLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-line bg-surface p-4 md:p-5">
@@ -15,18 +18,14 @@ export default function OrdersLayout({
           Đơn hàng
         </h1>
         <p className="mt-1 text-sm text-ink-soft">
-          Layout này chỉ bọc nhánh `/orders/*`, không render lại khi đổi đơn
-          con.
+          {session?.user?.name
+            ? `Xin chào ${session.user.name}.`
+            : "Đơn của tài khoản đang đăng nhập."}{" "}
+          Layout này chỉ bọc `/orders/*`.
         </p>
         <nav className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
           <Link href="/orders" className="text-ink underline">
             Danh sách
-          </Link>
-          <Link href="/orders/demo-001" className="text-ink-soft hover:text-ink">
-            demo-001
-          </Link>
-          <Link href="/orders/demo-002" className="text-ink-soft hover:text-ink">
-            demo-002
           </Link>
         </nav>
       </div>

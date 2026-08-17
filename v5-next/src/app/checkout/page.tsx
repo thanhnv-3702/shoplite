@@ -1,6 +1,9 @@
-import { CheckoutDemoForm } from "@/components/CheckoutDemoForm";
+import { auth } from "@/auth";
+import { CheckoutForm } from "@/components/CheckoutForm";
 
-export default function CheckoutPage() {
+export default async function CheckoutPage() {
+  const session = await auth();
+
   return (
     <section aria-labelledby="checkout-title">
       <h1
@@ -10,9 +13,12 @@ export default function CheckoutPage() {
         Thanh toán
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        Route được bảo vệ bởi middleware — cần đăng nhập demo trước.
+        Form RHF + Zod. Server validate lại bằng cùng schema trước khi lưu đơn.
       </p>
-      <CheckoutDemoForm />
+      <CheckoutForm
+        defaultEmail={session?.user?.email ?? ""}
+        defaultName={session?.user?.name ?? ""}
+      />
     </section>
   );
 }

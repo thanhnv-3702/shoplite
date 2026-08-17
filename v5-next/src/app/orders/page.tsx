@@ -1,23 +1,45 @@
 import Link from "next/link";
+import { auth } from "@/auth";
+import { formatMoney } from "@/lib/format";
+import { getOrdersByEmail } from "@/lib/orderStore";
 
-const demoOrders = ["demo-001", "demo-002"];
+export default async function OrdersPage() {
+  const session = await auth();
+  const email = session?.user?.email ?? "";
+  const orders = email ? getOrdersByEmail(email) : [];
 
-export default function OrdersPage() {
-  console.log("[server] OrdersPage render");
+  if (orders.length === 0) {
+    return (
+      <section className="rounded-2xl border border-dashed border-line bg-surface p-5 md:p-6">
+        <h2 className="font-display text-xl font-bold text-ink">
+          Chưa có đơn hàng
+        </h2>
+        <p className="mt-2 text-sm text-ink-soft">
+          Đơn lưu in-memory trên server (reset khi restart). Đặt hàng từ
+          checkout để thấy danh sách.
+        </p>
+        <Link
+          href="/"
+          className="mt-4 inline-block text-sm font-semibold text-ink underline"
+        >
+          Tiếp tục mua sắm
+        </Link>
+      </section>
+    );
+  }
 
   return (
     <section className="rounded-2xl border border-line bg-surface p-5 md:p-6">
-      <h2 className="font-display text-xl font-bold text-ink">
-        Danh sách đơn (khung)
-      </h2>
+      <h2 className="font-display text-xl font-bold text-ink">Đơn của tôi</h2>
       <ul className="mt-4 list-none space-y-2 p-0">
-        {demoOrders.map((id) => (
-          <li key={id}>
+        {orders.map((order) => (
+          <li key={order.id}>
             <Link
-              href={`/orders/${id}`}
-              className="block rounded-lg border border-line px-3 py-2.5 text-sm font-semibold text-ink no-underline hover:bg-surface-muted"
+              href={`/orders/${order.id}`}
+              className="flex items-center justify-between gap-3 rounded-lg border border-line px-3 py-2.5 text-sm no-underline hover:bg-surface-muted"
             >
-              Đơn {id}
+              <span className="font-semibold text-ink">{order.id}</span>
+              <span className="text-ink-soft">{formatMoney(order.total)}</span>
             </Link>
           </li>
         ))}
