@@ -4,7 +4,7 @@ import { auth } from "@/auth";
 
 export const metadata: Metadata = {
   title: "Đơn hàng",
-  description: "Đơn hàng của tài khoản ShopLite đang đăng nhập.",
+  description: "Đơn hàng của bạn trên ShopLite.",
   robots: { index: false, follow: false },
 };
 
@@ -17,22 +17,16 @@ export default async function OrdersLayout({
 
   return (
     <div className="space-y-6">
-      <div className="rounded-2xl border border-line bg-surface p-4 md:p-5">
-        <p className="text-xs font-semibold uppercase tracking-wide text-muted">
-          Layout lồng — orders
-        </p>
-        <h1 className="mt-1 font-display text-2xl font-bold text-ink">
-          Đơn hàng
-        </h1>
-        <p className="mt-1 text-sm text-ink-soft">
-          {session?.user?.name
-            ? `Xin chào ${session.user.name}.`
-            : "Đơn của tài khoản đang đăng nhập."}{" "}
-          Layout này chỉ bọc `/orders/*`.
-        </p>
-        <nav className="mt-4 flex flex-wrap gap-3 text-sm font-semibold">
-          <Link href="/orders" className="text-ink underline">
-            Danh sách
+      <div>
+        <h1 className="font-display text-2xl font-bold text-ink">Đơn hàng</h1>
+        {session?.user?.name && (
+          <p className="mt-1 text-sm text-ink-soft">
+            Xin chào {session.user.name}
+          </p>
+        )}
+        <nav className="mt-3">
+          <Link href="/orders" className="text-sm font-semibold text-ink underline">
+            Tất cả đơn
           </Link>
         </nav>
       </div>

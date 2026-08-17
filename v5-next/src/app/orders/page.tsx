@@ -15,8 +15,7 @@ export default async function OrdersPage() {
           Chưa có đơn hàng
         </h2>
         <p className="mt-2 text-sm text-ink-soft">
-          Đơn lưu in-memory trên server (reset khi restart). Đặt hàng từ
-          checkout để thấy danh sách.
+          Bạn chưa đặt đơn nào.
         </p>
         <Link
           href="/"

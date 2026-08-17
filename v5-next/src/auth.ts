@@ -3,10 +3,6 @@ import Credentials from "next-auth/providers/credentials";
 import { findDemoUser } from "@/lib/users";
 import { loginSchema } from "@/schemas/loginSchema";
 
-/**
- * Auth.js v5 — session JWT trong cookie.
- * Middleware đọc session để authorization; client chỉ ẩn/hiện UI.
- */
 export const { handlers, signIn, signOut, auth } = NextAuth({
   trustHost: true,
   secret:

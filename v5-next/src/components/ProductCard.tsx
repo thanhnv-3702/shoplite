@@ -6,14 +6,9 @@ import type { Product } from "@/types/product";
 
 interface ProductCardProps {
   product: Product;
-  /** Ảnh above-the-fold — ưu tiên LCP. */
   priority?: boolean;
 }
 
-/**
- * Server Component — không hook/event.
- * Chỉ nhúng AddToCartButton (client) cho phần tương tác.
- */
 export function ProductCard({ product, priority = false }: ProductCardProps) {
   const outOfStock = product.stock === 0;
   const rating =

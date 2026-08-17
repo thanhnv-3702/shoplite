@@ -1,39 +1,18 @@
 # ShopLite
 
-Shop e-commerce học Frontend: cùng một sản phẩm, năm stack nâng dần.
+Shop nhỏ, làm lại vài lần cho quen stack:
 
-**Bản live (Next.js):** xem mục [Demo](#demo) bên dưới sau khi deploy Vercel.
+| Thư mục | Stack |
+|---------|--------|
+| `v1-html/` | HTML, CSS |
+| `v2-js/` | JavaScript |
+| `v3-ts/` | TypeScript + Vite |
+| `v4-react/` | React + Vite + Tailwind |
+| `v5-next/` | Next.js App Router |
 
-| Version | Stack | Ghi chú |
-|---------|-------|--------|
-| `v1-html/` | HTML, CSS | UI tĩnh |
-| `v2-js/` | JavaScript | API, search, cart (VNĐ) |
-| `v3-ts/` | TypeScript + Vite | Type-safe shop |
-| `v4-react/` | React + Vite + Tailwind | SPA: router, TQ, Zustand |
-| `v5-next/` | Next.js App Router | SSR/SSG, Auth.js, SEO, deploy |
-
-## Tính năng (`v5-next`)
-
-- Catalog server-render, tìm kiếm / lọc trên URL (`?q=` + `category`)
-- Giỏ Zustand persist (`localStorage`)
-- Đăng nhập Auth.js Credentials, middleware bảo vệ `/checkout` và `/orders`
-- Checkout RHF + Zod (cùng schema phía server)
-- SEO: Metadata API, `generateMetadata` theo sản phẩm, sitemap, `next/image` + `next/font`
-
-## Demo
-
-Sau khi import repo lên Vercel, đặt **Root Directory** = `v5-next`, thêm env:
-
-- `AUTH_SECRET` — chuỗi ngẫu nhiên (`openssl rand -base64 32`)
-- `AUTH_URL` — URL production (vd `https://shoplite.vercel.app`)
-
-Tài khoản mẫu: `thanhg@shoplite.com` / `shoplite123`
-
-> URL public sẽ gắn vào đây sau khi deploy.
+Hiện dùng `v5-next`: xem sản phẩm, giỏ, đăng nhập, đặt hàng.
 
 ## Chạy local
-
-### v5-next
 
 ```bash
 cd v5-next
@@ -42,32 +21,15 @@ npm install
 npm run dev
 ```
 
-### v4-react
+Login demo: `thanhg@shoplite.com` / `shoplite123`
 
-```bash
-cd v4-react
-npm install
-npm run dev
-```
+Các bản cũ chạy tương tự trong thư mục tương ứng (`npm install && npm run dev`, HTML thì `npx serve .`).
 
-### v3-ts
+## Deploy (Vercel)
 
-```bash
-cd v3-ts
-npm install
-npm run dev
-```
+Root Directory: `v5-next`
 
-### v2-js
+Env:
 
-```bash
-cd v2-js
-npx serve .
-```
-
-### v1-html
-
-```bash
-cd v1-html
-npx serve .
-```
+- `AUTH_SECRET`
+- `AUTH_URL` (URL production)

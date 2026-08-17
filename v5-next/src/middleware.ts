@@ -9,10 +9,6 @@ function isProtectedPath(pathname: string): boolean {
   );
 }
 
-/**
- * Authorization ở server — đọc session Auth.js (JWT cookie).
- * Client ẩn nút chỉ là UX.
- */
 export default auth((request) => {
   const { pathname } = request.nextUrl;
   if (!isProtectedPath(pathname)) {

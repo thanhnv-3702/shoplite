@@ -10,10 +10,7 @@ interface CartState {
   clearCart: () => void;
 }
 
-/**
- * Client store — persist localStorage.
- * skipHydration: tránh mismatch SSR; rehydrate trong Providers.
- */
+// localStorage; hydrate sau mount cho khỏi lệch HTML
 export const useCartStore = create<CartState>()(
   persist(
     (set) => ({

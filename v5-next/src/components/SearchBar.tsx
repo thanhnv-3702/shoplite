@@ -4,9 +4,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
 import { homeHref } from "@/lib/format";
 
-/**
- * Client Component — cập nhật URL state `?q=` (giữ `category`).
- */
 export function SearchBar() {
   const router = useRouter();
   const searchParams = useSearchParams();

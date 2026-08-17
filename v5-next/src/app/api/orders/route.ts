@@ -23,7 +23,7 @@ export async function POST(request: Request) {
     body = await request.json();
   } catch {
     return Response.json(
-      { ok: false, error: "Body phải là JSON hợp lệ" },
+      { ok: false, error: "JSON không hợp lệ" },
       { status: 400 },
     );
   }
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     return Response.json(
       {
         ok: false,
-        error: "Dữ liệu đơn hàng không hợp lệ",
+        error: "Đơn hàng không hợp lệ",
         details: parsed.error.flatten(),
       },
       { status: 422 },

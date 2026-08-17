@@ -15,7 +15,7 @@ export default function ProductError({ error, reset }: ProductErrorProps) {
         Không tải được sản phẩm
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        {error.message || "Đã có lỗi khi tải chi tiết sản phẩm."}
+        {error.message || "Không tải được."}
       </p>
       <button
         type="button"

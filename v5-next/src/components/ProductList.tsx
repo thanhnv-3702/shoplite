@@ -5,7 +5,6 @@ interface ProductListProps {
   products: Product[];
 }
 
-/** Server Component — chỉ map data đã fetch ở server. */
 export function ProductList({ products }: ProductListProps) {
   if (products.length === 0) {
     return (

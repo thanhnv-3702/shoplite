@@ -13,7 +13,7 @@ export interface StoredOrder {
   createdAt: string;
 }
 
-/** In-memory — reset khi restart server. Đủ cho lab Day 17. */
+// mất khi restart server
 const orders: StoredOrder[] = [
   {
     id: "SL-DEMO001",
