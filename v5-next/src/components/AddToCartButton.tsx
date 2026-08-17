@@ -1,22 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useCartStore } from "@/store/cartStore";
 import type { Product } from "@/types/product";
+import { useState } from "react";
 
 interface AddToCartButtonProps {
   product: Product;
 }
 
-/**
- * Client Component — cần onClick + useState.
- * Store Zustand/Auth sẽ gắn ở Day 17; tạm phản hồi UI tại chỗ.
- */
+/** Client island — gọi Zustand store. */
 export function AddToCartButton({ product }: AddToCartButtonProps) {
+  const addToCart = useCartStore((state) => state.addToCart);
   const [added, setAdded] = useState(false);
   const outOfStock = product.stock === 0;
 
   function handleClick() {
     if (outOfStock) return;
+    addToCart(product);
     setAdded(true);
     window.setTimeout(() => setAdded(false), 1200);
   }

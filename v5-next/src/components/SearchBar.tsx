@@ -2,15 +2,16 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, useTransition } from "react";
+import { homeHref } from "@/lib/format";
 
 /**
- * Client Component — cần useState/onChange + next/navigation.
- * Lọc thật chạy ở Server Component (page đọc searchParams `q`).
+ * Client Component — cập nhật URL state `?q=` (giữ `category`).
  */
 export function SearchBar() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const urlQuery = searchParams.get("q") ?? "";
+  const category = searchParams.get("category") ?? "";
   const [value, setValue] = useState(urlQuery);
   const [isPending, startTransition] = useTransition();
 
@@ -20,14 +21,7 @@ export function SearchBar() {
 
   function handleChange(next: string) {
     setValue(next);
-    const params = new URLSearchParams();
-    if (next.trim()) {
-      params.set("q", next);
-    }
-    const query = params.toString();
-    // Luôn về trang chủ để lọc server-side danh sách sản phẩm
-    const href = query ? `/?${query}` : "/";
-
+    const href = homeHref({ q: next, category });
     startTransition(() => {
       router.replace(href, { scroll: false });
     });

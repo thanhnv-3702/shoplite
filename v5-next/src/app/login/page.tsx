@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { DemoLoginForm } from "@/components/DemoLoginForm";
+import { LoginForm } from "@/components/LoginForm";
 
 export default function LoginPage() {
   return (
@@ -11,10 +11,11 @@ export default function LoginPage() {
         Đăng nhập
       </h1>
       <p className="mt-2 text-sm text-ink-soft">
-        Demo cookie — bảo vệ route thật chạy ở middleware (server).
+        Session Auth.js (JWT cookie). Middleware chặn `/orders` và `/checkout`
+        khi chưa đăng nhập.
       </p>
       <Suspense fallback={<p className="mt-8 text-sm text-muted">Đang tải…</p>}>
-        <DemoLoginForm />
+        <LoginForm />
       </Suspense>
     </section>
   );

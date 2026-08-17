@@ -1,17 +1,23 @@
-import { createOrderId, parseCreateOrderPayload } from "@/lib/orders";
+import { auth } from "@/auth";
+import { parseCreateOrderPayload } from "@/lib/orders";
+import { getOrdersByEmail, saveOrder } from "@/lib/orderStore";
 
-/**
- * Route Handler — backend nhỏ trong Next.js.
- * Day 17 sẽ gắn checkout form + Auth thật.
- */
 export async function GET() {
-  return Response.json({
-    ok: true,
-    message: "ShopLite Orders API — dùng POST để tạo đơn.",
-  });
+  const session = await auth();
+  if (!session?.user?.email) {
+    return Response.json({ ok: false, error: "Chưa đăng nhập" }, { status: 401 });
+  }
+
+  const orders = getOrdersByEmail(session.user.email);
+  return Response.json({ ok: true, orders });
 }
 
 export async function POST(request: Request) {
+  const session = await auth();
+  if (!session?.user?.email) {
+    return Response.json({ ok: false, error: "Chưa đăng nhập" }, { status: 401 });
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -34,22 +40,6 @@ export async function POST(request: Request) {
     );
   }
 
-  const { items, customerEmail } = parsed.data;
-  const total = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-  const orderId = createOrderId();
-
-  return Response.json(
-    {
-      ok: true,
-      orderId,
-      status: "pending",
-      total,
-      itemCount: items.reduce((sum, item) => sum + item.quantity, 0),
-      customerEmail: customerEmail ?? null,
-    },
-    { status: 201 },
-  );
+  const order = saveOrder(parsed.data, session.user.email);
+  return Response.json({ ok: true, order }, { status: 201 });
 }

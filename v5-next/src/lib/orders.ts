@@ -1,18 +1,7 @@
-import { z } from "zod";
+import { createOrderSchema } from "@/schemas/checkoutSchema";
 
-const orderItemSchema = z.object({
-  id: z.number().int().positive(),
-  title: z.string().min(1),
-  price: z.number().nonnegative(),
-  quantity: z.number().int().positive(),
-});
-
-const createOrderSchema = z.object({
-  items: z.array(orderItemSchema).min(1, "Giỏ hàng trống"),
-  customerEmail: z.string().email().optional(),
-});
-
-export type CreateOrderPayload = z.infer<typeof createOrderSchema>;
+export { createOrderSchema };
+export type { CreateOrderPayload } from "@/schemas/checkoutSchema";
 
 export function parseCreateOrderPayload(body: unknown) {
   return createOrderSchema.safeParse(body);

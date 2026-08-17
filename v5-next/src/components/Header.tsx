@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Suspense } from "react";
+import { AuthStatus } from "./AuthStatus";
+import { CartBadge } from "./CartBadge";
 import { SearchBar } from "./SearchBar";
 
 function SearchBarFallback() {
@@ -11,10 +13,6 @@ function SearchBarFallback() {
   );
 }
 
-/**
- * Client Component — cần pathname + SearchBar (hooks/events).
- * Product list vẫn là Server Component ở page.tsx.
- */
 export function Header() {
   const pathname = usePathname();
 
@@ -83,22 +81,8 @@ export function Header() {
         </div>
 
         <div className="ml-auto flex items-center gap-2 md:gap-3">
-          <Link
-            href="/login"
-            className="hidden rounded-lg px-3 py-2 text-sm font-semibold text-ink-soft no-underline hover:bg-surface-muted hover:text-ink sm:inline-block"
-          >
-            Đăng nhập
-          </Link>
-          <Link
-            href="/cart"
-            className="relative inline-flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-bg text-lg no-underline"
-            aria-label="Giỏ hàng, trống"
-          >
-            <span aria-hidden="true">🛒</span>
-            <span className="absolute -right-1.5 -top-1.5 flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[11px] font-bold text-white">
-              0
-            </span>
-          </Link>
+          <AuthStatus />
+          <CartBadge />
         </div>
       </div>
     </header>
