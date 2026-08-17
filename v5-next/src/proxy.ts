@@ -9,7 +9,7 @@ function isProtectedPath(pathname: string): boolean {
   );
 }
 
-export default auth((request) => {
+export const proxy = auth((request) => {
   const { pathname } = request.nextUrl;
   if (!isProtectedPath(pathname)) {
     return NextResponse.next();
